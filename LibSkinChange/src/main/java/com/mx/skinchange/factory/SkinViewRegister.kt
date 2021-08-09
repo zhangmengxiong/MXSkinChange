@@ -8,18 +8,36 @@ import com.mx.skinchange.common_views.*
 import java.lang.Exception
 
 object SkinViewRegister {
+    /**
+     * 内置换肤插件
+     */
+    private val skinDefaultViewList = HashMap<String, Class<out ISkinView>>()
+
+    /**
+     * 外部注册换肤插件
+     */
     private val skinViewList = HashMap<String, Class<out ISkinView>>()
 
     init {
-        register(CommonLinearLayout::class.java)
-        register(CommonRelativeLayout::class.java)
-        register(CommonFrameLayout::class.java)
-        register(CommonTextView::class.java)
-        register(CommonImageView::class.java)
-        register(CommonView::class.java)
-        register(CommonButton::class.java)
-        register(CommonScrollView::class.java)
-        register(CommonHorizontalScrollView::class.java)
+        registerDefault(CommonLinearLayout::class.java)
+        registerDefault(CommonRelativeLayout::class.java)
+        registerDefault(CommonFrameLayout::class.java)
+        registerDefault(CommonTextView::class.java)
+        registerDefault(CommonImageView::class.java)
+        registerDefault(CommonView::class.java)
+        registerDefault(CommonButton::class.java)
+        registerDefault(CommonScrollView::class.java)
+        registerDefault(CommonHorizontalScrollView::class.java)
+        registerDefault(CommonEditText::class.java)
+    }
+
+    private fun registerDefault(iSkinView: Class<out ISkinView>) {
+        val name = getNameByClass(iSkinView) ?: return
+        val exitsOne = skinDefaultViewList.keys.firstOrNull { it == name }
+        if (exitsOne != null) {
+            skinDefaultViewList.remove(exitsOne)
+        }
+        skinDefaultViewList[name] = iSkinView
     }
 
     fun register(iSkinView: Class<out ISkinView>) {
@@ -51,6 +69,6 @@ object SkinViewRegister {
     }
 
     fun getRegisterClass(name: String): Class<out ISkinView>? {
-        return skinViewList[name]
+        return skinViewList[name] ?: skinDefaultViewList[name]
     }
 }
