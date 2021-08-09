@@ -24,7 +24,7 @@ class CommonRelativeLayout @JvmOverloads constructor(
         return this
     }
 
-    override fun onUpdate() {
+    override fun onChange() {
         backgroundAttr.applyAttrs()
     }
 

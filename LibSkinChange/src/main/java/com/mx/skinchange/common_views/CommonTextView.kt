@@ -26,7 +26,7 @@ class CommonTextView @JvmOverloads constructor(
         return this
     }
 
-    override fun onUpdate() {
+    override fun onChange() {
         attrBackground.applyAttrs()
         attrTextView.applyAttrs()
     }

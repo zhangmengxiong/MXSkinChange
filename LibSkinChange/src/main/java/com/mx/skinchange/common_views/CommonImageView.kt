@@ -23,7 +23,7 @@ class CommonImageView @JvmOverloads constructor(
         return this
     }
 
-    override fun onUpdate() {
+    override fun onChange() {
         imageViewAttr.applyAttrs()
     }
 

@@ -12,7 +12,7 @@ import com.mx.skinchange.observer.ISkinChange
 import com.mx.skinchange.observer.SkinObserver
 
 class SkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
-    private val skinViewList = ArrayList<ISkinView>()
+    private val skinViewList = ArrayList<ISkinChange>()
     override fun onCreateView(
         parent: View?,
         name: String,
@@ -37,19 +37,19 @@ class SkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
     }
 
     @OnLifecycleEvent(value = Lifecycle.Event.ON_CREATE)
-    fun onRegister() {
+    fun onCreateActivity() {
         SkinObserver.addObserver(this)
     }
 
     @OnLifecycleEvent(value = Lifecycle.Event.ON_DESTROY)
-    fun onUnRegister() {
+    fun onDestroyActivity() {
         skinViewList.clear()
         SkinObserver.deleteObserver(this)
     }
 
     override fun onChange() {
         skinViewList.toList().forEach {
-            it.onUpdate()
+            it.onChange()
         }
     }
 }

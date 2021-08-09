@@ -24,7 +24,7 @@ class CommonLinearLayout @JvmOverloads constructor(
         return this
     }
 
-    override fun onUpdate() {
+    override fun onChange() {
         backgroundAttr.applyAttrs()
     }
 
