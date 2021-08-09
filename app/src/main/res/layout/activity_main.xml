@@ -1,47 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <RadioGroup
-        android:id="@+id/skinTypeGroup"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@color/teal_200"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/defaultSkin"
+
+        <RadioGroup
+            android:id="@+id/skinTypeGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="默认" />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/darkSkin"
+            <RadioButton
+                android:id="@+id/defaultSkin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="默认" />
+
+            <RadioButton
+                android:id="@+id/darkSkin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="黑色" />
+        </RadioGroup>
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="黑色" />
-    </RadioGroup>
+            android:layout_marginTop="20dp"
+            android:background="@color/black"
+            android:padding="10dp"
+            android:src="@mipmap/ic_launcher" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:src="@mipmap/ic_launcher" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_background"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableBottom="@mipmap/ic_launcher"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Hello World!"
+            android:textColor="@color/focus" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/text_background"
-        android:drawableLeft="@mipmap/ic_launcher"
-        android:drawableTop="@mipmap/ic_launcher"
-        android:drawableRight="@mipmap/ic_launcher"
-        android:drawableBottom="@mipmap/ic_launcher"
-        android:padding="10dp"
-        android:text="Hello World!"
-        android:textColor="@color/focus" />
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/purple_200" />
 
-</LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_background"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableBottom="@mipmap/ic_launcher"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Hello World!"
+            android:textColor="@color/focus" />
+
+
+    </LinearLayout>
+</ScrollView>

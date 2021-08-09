@@ -16,6 +16,10 @@ object SkinViewRegister {
         register(CommonFrameLayout::class.java)
         register(CommonTextView::class.java)
         register(CommonImageView::class.java)
+        register(CommonView::class.java)
+        register(CommonButton::class.java)
+        register(CommonScrollView::class.java)
+        register(CommonHorizontalScrollView::class.java)
     }
 
     fun register(iSkinView: Class<out ISkinView>) {
