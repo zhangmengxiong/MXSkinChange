@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AttrBackground">
+        <attr name="android:background" />
+    </declare-styleable>
+    <declare-styleable name="AttrTextView">
+        <attr name="android:textColor" />
+        <attr name="android:textColorHint" />
+    </declare-styleable>
+    <declare-styleable name="AttrImageView">
+        <attr name="android:src" />
+    </declare-styleable>
+</resources>
