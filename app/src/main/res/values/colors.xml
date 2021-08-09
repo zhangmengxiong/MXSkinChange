@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="focus">#CF1608</color>
 
+    <color name="focus_dark">#0DDD3E</color>
 </resources>

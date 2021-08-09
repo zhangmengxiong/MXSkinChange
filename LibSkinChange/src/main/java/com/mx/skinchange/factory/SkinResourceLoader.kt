@@ -3,6 +3,7 @@ package com.mx.skinchange.factory
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
+import com.mx.skinchange.SkinManager
 import com.mx.skinchange.utils.Log
 import com.mx.skinchange.utils.SkinUtils
 
@@ -10,11 +11,10 @@ object SkinResourceLoader {
     const val TYPE_COLOR = "color"
     const val TYPE_DRAWABLE = "drawable"
 
-    private var skinName: String? = "dark"
 
     fun loadSkinResourceId(context: Context, resId: Int, resType: String): Int {
-        val skinName = skinName
-        if (skinName.isNullOrEmpty()) {
+        val skinName = SkinManager.getSkinName()
+        if (skinName.isEmpty()) {
             return resId
         }
         val resourceName = SkinUtils.getResourceNameById(context, resId) ?: return resId
@@ -50,9 +50,9 @@ object SkinResourceLoader {
         resType: String,
         load: ((resId: Int) -> T?)
     ): T? {
-        val skinName = skinName
+        val skinName = SkinManager.getSkinName()
         val resourceName = SkinUtils.getResourceNameById(context, resId) ?: return null
-        if (skinName.isNullOrEmpty()) {
+        if (skinName.isEmpty()) {
             return load.invoke(resId)
         }
         val newResId = SkinUtils.getResourceId(context, resourceName + skinName, resType)

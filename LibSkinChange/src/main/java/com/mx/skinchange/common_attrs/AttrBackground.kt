@@ -39,15 +39,13 @@ class AttrBackground(val view: View) : AttrBase {
             resId,
             SkinResourceLoader.TYPE_DRAWABLE
         )
-        val drawable = SkinResourceLoader.loadDrawable(view.context, skinResId)
-        if (drawable != null) {
-            val paddingLeft: Int = view.paddingLeft
-            val paddingTop: Int = view.paddingTop
-            val paddingRight: Int = view.paddingRight
-            val paddingBottom: Int = view.paddingBottom
-            ViewCompat.setBackground(view, drawable)
-            view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom)
-        }
+        val drawable = view.context.resources.getDrawable(skinResId)
+        val paddingLeft: Int = view.paddingLeft
+        val paddingTop: Int = view.paddingTop
+        val paddingRight: Int = view.paddingRight
+        val paddingBottom: Int = view.paddingBottom
+        ViewCompat.setBackground(view, drawable)
+        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom)
     }
 
     fun setBackgroundRes(res: Int) {
