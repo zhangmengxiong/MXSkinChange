@@ -29,12 +29,10 @@ class AttrBackground(val view: View) : AttrBase {
         if (resId == AttrBase.INVALID_ID) {
             return
         }
-        val skinResId = SkinResourceLoader.loadSkinResourceId(
+        val drawable = SkinResourceLoader.loadDrawable(
             view.context,
-            resId,
-            SkinResourceLoader.TYPE_DRAWABLE
+            resId
         )
-        val drawable = view.context.resources.getDrawable(skinResId)
         val paddingLeft: Int = view.paddingLeft
         val paddingTop: Int = view.paddingTop
         val paddingRight: Int = view.paddingRight

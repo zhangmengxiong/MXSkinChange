@@ -3,6 +3,7 @@ package com.mx.skinchange.common_views
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_attrs.AttrBackground
 import com.mx.skinchange.common_attrs.AttrImageView
 

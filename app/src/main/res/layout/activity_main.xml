@@ -36,6 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/text_background"
+        android:drawableLeft="@mipmap/ic_launcher"
+        android:drawableTop="@mipmap/ic_launcher"
+        android:drawableRight="@mipmap/ic_launcher"
+        android:drawableBottom="@mipmap/ic_launcher"
         android:padding="10dp"
         android:text="Hello World!"
         android:textColor="@color/focus" />

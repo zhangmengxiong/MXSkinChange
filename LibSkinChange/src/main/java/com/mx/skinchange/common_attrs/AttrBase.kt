@@ -3,8 +3,6 @@ package com.mx.skinchange.common_attrs
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.annotation.StyleableRes
-import com.mx.skinchange.R
-import java.lang.Exception
 
 interface AttrBase {
     companion object {
@@ -23,11 +21,8 @@ interface AttrBase {
         defaultId: Int = INVALID_ID
     ): Int {
         try {
-            if (typedArray.hasValue(R.styleable.AttrTextView_android_textColor)) {
-                return typedArray.getResourceId(
-                    R.styleable.AttrTextView_android_textColor,
-                    defaultId
-                )
+            if (typedArray.hasValue(index)) {
+                return typedArray.getResourceId(index, defaultId)
             }
         } catch (e: Exception) {
         }

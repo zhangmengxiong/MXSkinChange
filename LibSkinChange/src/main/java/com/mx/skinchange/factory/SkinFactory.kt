@@ -7,9 +7,8 @@ import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.mx.skinchange.common_views.ISkinView
-import com.mx.skinchange.observer.ISkinChange
-import com.mx.skinchange.observer.SkinObserver
+import com.mx.skinchange.common.ISkinChange
+import com.mx.skinchange.utils.SkinObserver
 
 class SkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
     private val skinViewList = ArrayList<ISkinChange>()

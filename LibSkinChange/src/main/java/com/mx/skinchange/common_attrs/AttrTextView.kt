@@ -3,6 +3,7 @@ package com.mx.skinchange.common_attrs
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import com.mx.skinchange.R
 import com.mx.skinchange.factory.SkinResourceLoader
 
@@ -24,6 +25,16 @@ class AttrTextView(val view: TextView) : AttrBase {
             textColorResId = getResourceId(a, R.styleable.AttrTextView_android_textColor)
             textColorHintResId = getResourceId(a, R.styleable.AttrTextView_android_textColorHint)
 
+            mDrawableLeftResId = getResourceId(a, R.styleable.AttrTextView_android_drawableLeft)
+            if (mDrawableLeftResId == AttrBase.INVALID_ID) {
+                getResourceId(a, R.styleable.AttrTextView_android_drawableStart)
+            }
+            mDrawableTopResId = getResourceId(a, R.styleable.AttrTextView_android_drawableTop)
+            mDrawableRightResId = getResourceId(a, R.styleable.AttrTextView_android_drawableRight)
+            if (mDrawableRightResId == AttrBase.INVALID_ID) {
+                getResourceId(a, R.styleable.AttrTextView_android_drawableEnd)
+            }
+            mDrawableBottomResId = getResourceId(a, R.styleable.AttrTextView_android_drawableBottom)
         } finally {
             a.recycle()
         }
@@ -33,6 +44,7 @@ class AttrTextView(val view: TextView) : AttrBase {
     override fun applyAttrs() {
         applyTextColor()
         applyTextColorHint()
+        applyDrawableRound()
     }
 
 
@@ -41,12 +53,7 @@ class AttrTextView(val view: TextView) : AttrBase {
         if (resId == AttrBase.INVALID_ID) {
             return
         }
-        val skinResId = SkinResourceLoader.loadSkinResourceId(
-            view.context,
-            resId,
-            SkinResourceLoader.TYPE_COLOR
-        )
-        view.setTextColor(view.resources.getColorStateList(skinResId))
+        view.setTextColor(SkinResourceLoader.loadColorStateList(view.context, resId))
     }
 
     private fun applyTextColorHint() {
@@ -54,12 +61,8 @@ class AttrTextView(val view: TextView) : AttrBase {
         if (resId == AttrBase.INVALID_ID) {
             return
         }
-        val skinResId = SkinResourceLoader.loadSkinResourceId(
-            view.context,
-            resId,
-            SkinResourceLoader.TYPE_COLOR
-        )
-        view.setHintTextColor(view.resources.getColorStateList(skinResId))
+
+        view.setHintTextColor(SkinResourceLoader.loadColorStateList(view.context, resId))
     }
 
     fun setTextAppearance(resId: Int) {
@@ -81,7 +84,11 @@ class AttrTextView(val view: TextView) : AttrBase {
         end: Int,
         bottom: Int
     ) {
-
+        mDrawableLeftResId = start
+        mDrawableTopResId = top
+        mDrawableRightResId = end
+        mDrawableBottomResId = bottom
+        applyDrawableRound()
     }
 
     fun setCompoundDrawablesWithIntrinsicBounds(
@@ -90,6 +97,39 @@ class AttrTextView(val view: TextView) : AttrBase {
         right: Int,
         bottom: Int
     ) {
+        mDrawableLeftResId = left
+        mDrawableTopResId = top
+        mDrawableRightResId = right
+        mDrawableBottomResId = bottom
+        applyDrawableRound()
+    }
 
+    private fun applyDrawableRound() {
+        val left = if (mDrawableLeftResId != AttrBase.INVALID_ID) {
+            SkinResourceLoader.loadDrawable(
+                view.context,
+                mDrawableLeftResId
+            )
+        } else null
+        val top = if (mDrawableTopResId != AttrBase.INVALID_ID) {
+            SkinResourceLoader.loadDrawable(
+                view.context,
+                mDrawableTopResId
+            )
+        } else null
+        val right = if (mDrawableRightResId != AttrBase.INVALID_ID) {
+            SkinResourceLoader.loadDrawable(
+                view.context,
+                mDrawableRightResId
+            )
+        } else null
+        val bottom = if (mDrawableBottomResId != AttrBase.INVALID_ID) {
+            SkinResourceLoader.loadDrawable(
+                view.context,
+                mDrawableBottomResId
+            )
+        } else null
+
+        view.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
     }
 }

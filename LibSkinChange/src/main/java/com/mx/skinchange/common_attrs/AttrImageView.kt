@@ -25,18 +25,13 @@ class AttrImageView(val view: CommonImageView) : AttrBase {
         applyAttrs()
     }
 
-    @SuppressLint("RestrictedApi")
     override fun applyAttrs() {
         val resId = checkResourceId(srcResId)
         if (resId == AttrBase.INVALID_ID) {
             return
         }
-        val skinResId = SkinResourceLoader.loadSkinResourceId(
-            view.context,
-            resId,
-            SkinResourceLoader.TYPE_DRAWABLE
-        )
-        view.setImageDrawable(AppCompatResources.getDrawable(view.context, skinResId))
+        val drawable = SkinResourceLoader.loadDrawable(view.context, resId)
+        view.setImageDrawable(drawable)
     }
 
     fun setImageResource(res: Int) {

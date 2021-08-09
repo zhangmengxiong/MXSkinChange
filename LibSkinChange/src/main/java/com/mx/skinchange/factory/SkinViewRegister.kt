@@ -3,6 +3,7 @@ package com.mx.skinchange.factory
 import android.content.Context
 import android.util.AttributeSet
 import com.mx.skinchange.SkinManager
+import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_views.*
 import java.lang.Exception
 

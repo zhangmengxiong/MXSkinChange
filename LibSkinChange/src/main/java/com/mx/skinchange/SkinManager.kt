@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import androidx.core.view.LayoutInflaterCompat
 import androidx.lifecycle.Lifecycle
 import com.mx.skinchange.factory.SkinFactory
-import com.mx.skinchange.observer.SkinObserver
+import com.mx.skinchange.utils.SkinObserver
 
 object SkinManager {
     private const val SKIN_NAME_SAVED = "MX_SKIN_CHANGE_NAME"
