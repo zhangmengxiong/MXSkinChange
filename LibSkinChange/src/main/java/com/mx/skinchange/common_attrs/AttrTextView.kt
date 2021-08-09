@@ -9,6 +9,10 @@ import com.mx.skinchange.factory.SkinResourceLoader
 class AttrTextView(val view: TextView) : AttrBase {
     private var textColorResId = AttrBase.INVALID_ID
     private var textColorHintResId = AttrBase.INVALID_ID
+    private var mDrawableBottomResId: Int = AttrBase.INVALID_ID
+    private var mDrawableLeftResId: Int = AttrBase.INVALID_ID
+    private var mDrawableRightResId: Int = AttrBase.INVALID_ID
+    private var mDrawableTopResId: Int = AttrBase.INVALID_ID
 
     override fun initAttrs(attrs: AttributeSet?, defStyleAttr: Int) {
         val a: TypedArray = view.context.obtainStyledAttributes(
@@ -17,18 +21,9 @@ class AttrTextView(val view: TextView) : AttrBase {
             defStyleAttr, 0
         )
         try {
-            if (a.hasValue(R.styleable.AttrTextView_android_textColor)) {
-                textColorResId = a.getResourceId(
-                    R.styleable.AttrTextView_android_textColor,
-                    AttrBase.INVALID_ID
-                )
-            }
-            if (a.hasValue(R.styleable.AttrTextView_android_textColorHint)) {
-                textColorHintResId = a.getResourceId(
-                    R.styleable.AttrTextView_android_textColorHint,
-                    AttrBase.INVALID_ID
-                )
-            }
+            textColorResId = getResourceId(a, R.styleable.AttrTextView_android_textColor)
+            textColorHintResId = getResourceId(a, R.styleable.AttrTextView_android_textColorHint)
+
         } finally {
             a.recycle()
         }
@@ -72,21 +67,29 @@ class AttrTextView(val view: TextView) : AttrBase {
             resId, R.styleable.AttrTextView
         )
         try {
-            if (a.hasValue(R.styleable.AttrTextView_android_textColor)) {
-                textColorResId = a.getResourceId(
-                    R.styleable.AttrTextView_android_textColor,
-                    AttrBase.INVALID_ID
-                )
-            }
-            if (a.hasValue(R.styleable.AttrTextView_android_textColorHint)) {
-                textColorHintResId = a.getResourceId(
-                    R.styleable.AttrTextView_android_textColorHint,
-                    AttrBase.INVALID_ID
-                )
-            }
+            textColorResId = getResourceId(a, R.styleable.AttrTextView_android_textColor)
+            textColorHintResId = getResourceId(a, R.styleable.AttrTextView_android_textColorHint)
         } finally {
             a.recycle()
         }
         applyAttrs()
+    }
+
+    fun setCompoundDrawablesRelativeWithIntrinsicBounds(
+        start: Int,
+        top: Int,
+        end: Int,
+        bottom: Int
+    ) {
+
+    }
+
+    fun setCompoundDrawablesWithIntrinsicBounds(
+        left: Int,
+        top: Int,
+        right: Int,
+        bottom: Int
+    ) {
+
     }
 }

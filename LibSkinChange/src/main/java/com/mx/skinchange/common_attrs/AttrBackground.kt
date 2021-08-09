@@ -17,12 +17,7 @@ class AttrBackground(val view: View) : AttrBase {
             defStyleAttr, 0
         )
         try {
-            if (a.hasValue(R.styleable.AttrBackground_android_background)) {
-                backgroundResId = a.getResourceId(
-                    R.styleable.AttrBackground_android_background,
-                    AttrBase.INVALID_ID
-                )
-            }
+            backgroundResId = getResourceId(a, R.styleable.AttrBackground_android_background)
         } finally {
             a.recycle()
         }
@@ -48,7 +43,7 @@ class AttrBackground(val view: View) : AttrBase {
         view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom)
     }
 
-    fun setBackgroundRes(res: Int) {
+    fun setBackgroundResource(res: Int) {
         backgroundResId = res
         applyAttrs()
     }

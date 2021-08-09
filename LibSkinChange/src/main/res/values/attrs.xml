@@ -6,6 +6,10 @@
     <declare-styleable name="AttrTextView">
         <attr name="android:textColor" />
         <attr name="android:textColorHint" />
+        <attr name="android:drawableLeft" />
+        <attr name="android:drawableTop" />
+        <attr name="android:drawableRight" />
+        <attr name="android:drawableBottom" />
     </declare-styleable>
     <declare-styleable name="AttrImageView">
         <attr name="android:src" />

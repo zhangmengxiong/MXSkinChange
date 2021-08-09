@@ -18,12 +18,7 @@ class AttrImageView(val view: CommonImageView) : AttrBase {
             defStyleAttr, 0
         )
         try {
-            if (a.hasValue(R.styleable.AttrImageView_android_src)) {
-                srcResId = a.getResourceId(
-                    R.styleable.AttrImageView_android_src,
-                    AttrBase.INVALID_ID
-                )
-            }
+            srcResId = getResourceId(a, R.styleable.AttrImageView_android_src)
         } finally {
             a.recycle()
         }

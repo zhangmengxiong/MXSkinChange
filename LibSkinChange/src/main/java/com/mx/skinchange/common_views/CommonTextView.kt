@@ -40,8 +40,28 @@ class CommonTextView @JvmOverloads constructor(
         attrTextView.setTextAppearance(resId)
     }
 
+    override fun setCompoundDrawablesRelativeWithIntrinsicBounds(
+        start: Int,
+        top: Int,
+        end: Int,
+        bottom: Int
+    ) {
+        super.setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
+        attrTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
+    }
+
+    override fun setCompoundDrawablesWithIntrinsicBounds(
+        left: Int,
+        top: Int,
+        right: Int,
+        bottom: Int
+    ) {
+        super.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
+        attrTextView.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
+    }
+
     override fun setBackgroundResource(resid: Int) {
         super.setBackgroundResource(resid)
-        attrBackground.setBackgroundRes(resid)
+        attrBackground.setBackgroundResource(resid)
     }
 }

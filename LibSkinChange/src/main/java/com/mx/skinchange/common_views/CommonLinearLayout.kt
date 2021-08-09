@@ -10,10 +10,10 @@ class CommonLinearLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr), ISkinView {
 
-    private val backgroundAttr by lazy { AttrBackground(this) }
+    private val attrBackground by lazy { AttrBackground(this) }
 
     init {
-        backgroundAttr.initAttrs(attrs, defStyleAttr)
+        attrBackground.initAttrs(attrs, defStyleAttr)
     }
 
     override fun getName(): String {
@@ -25,11 +25,11 @@ class CommonLinearLayout @JvmOverloads constructor(
     }
 
     override fun onChange() {
-        backgroundAttr.applyAttrs()
+        attrBackground.applyAttrs()
     }
 
     override fun setBackgroundResource(resid: Int) {
         super.setBackgroundResource(resid)
-        backgroundAttr.setBackgroundRes(resid)
+        attrBackground.setBackgroundResource(resid)
     }
 }
