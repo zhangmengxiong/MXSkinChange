@@ -74,14 +74,30 @@
             android:text="Hello World!"
             android:textColor="@color/focus" />
 
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/purple_200"
+            android:text="测试"
+            android:textColor="@color/black" />
+
+        <com.mx.skinchange.common_views.CommonEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/purple_200"
+            android:text="测试"
+            android:textColor="@color/black" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:background="@color/purple_200"
-            android:editable="true"
-            android:focusable="true"
             android:text="测试"
             android:textColor="@color/black" />
     </LinearLayout>
