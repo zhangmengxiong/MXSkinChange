@@ -3,9 +3,7 @@ package com.mx.skinchange.common_views
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.HorizontalScrollView
-import android.widget.ScrollView
 import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_attrs.AttrBackground
 

@@ -3,7 +3,6 @@ package com.mx.skinchange.common_attrs
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
 import com.mx.skinchange.R
 import com.mx.skinchange.factory.SkinResourceLoader
 

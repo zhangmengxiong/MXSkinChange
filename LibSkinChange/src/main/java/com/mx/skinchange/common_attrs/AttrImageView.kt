@@ -1,9 +1,7 @@
 package com.mx.skinchange.common_attrs
 
-import android.annotation.SuppressLint
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import androidx.appcompat.content.res.AppCompatResources
 import com.mx.skinchange.R
 import com.mx.skinchange.common_views.CommonImageView
 import com.mx.skinchange.factory.SkinResourceLoader

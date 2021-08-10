@@ -2,9 +2,7 @@ package com.mx.skinchange.common_attrs
 
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.view.View
 import android.widget.CompoundButton
-import androidx.core.view.ViewCompat
 import androidx.core.widget.CompoundButtonCompat
 import com.mx.skinchange.R
 import com.mx.skinchange.factory.SkinResourceLoader

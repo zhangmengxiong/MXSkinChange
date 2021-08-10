@@ -1,7 +1,6 @@
 package com.mx.skinchange.common
 
 import android.view.View
-import com.mx.skinchange.common.ISkinChange
 
 /**
  * 皮肤View生成的基类
