@@ -6,7 +6,7 @@ import com.mx.skinchange.R
 import com.mx.skinchange.common_views.CommonImageView
 import com.mx.skinchange.factory.SkinResourceLoader
 
-class AttrImageView(val view: CommonImageView) : AttrBase {
+open class AttrImageView(val view: CommonImageView) : AttrBase {
     private var srcResId = AttrBase.INVALID_ID
 
     override fun initAttrs(attrs: AttributeSet?, defStyleAttr: Int) {

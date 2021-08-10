@@ -7,7 +7,7 @@ import androidx.core.widget.CompoundButtonCompat
 import com.mx.skinchange.R
 import com.mx.skinchange.factory.SkinResourceLoader
 
-class AttrButton(val view: CompoundButton) : AttrBase {
+open class AttrButton(val view: CompoundButton) : AttrBase {
     private var buttonResId = AttrBase.INVALID_ID
     private var buttonTintResId = AttrBase.INVALID_ID
 

@@ -6,7 +6,7 @@ import android.widget.TextView
 import com.mx.skinchange.R
 import com.mx.skinchange.factory.SkinResourceLoader
 
-class AttrTextView(val view: TextView) : AttrBase {
+open class AttrTextView(val view: TextView) : AttrBase {
     private var textColorResId = AttrBase.INVALID_ID
     private var textColorHintResId = AttrBase.INVALID_ID
     private var mDrawableBottomResId: Int = AttrBase.INVALID_ID

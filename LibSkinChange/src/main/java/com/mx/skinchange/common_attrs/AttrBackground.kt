@@ -7,7 +7,7 @@ import androidx.core.view.ViewCompat
 import com.mx.skinchange.R
 import com.mx.skinchange.factory.SkinResourceLoader
 
-class AttrBackground(val view: View) : AttrBase {
+open class AttrBackground(val view: View) : AttrBase {
     private var backgroundResId = AttrBase.INVALID_ID
 
     override fun initAttrs(attrs: AttributeSet?, defStyleAttr: Int) {
