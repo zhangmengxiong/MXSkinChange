@@ -24,6 +24,7 @@
                 android:id="@+id/defaultSkin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:button="@mipmap/ic_launcher"
                 android:text="默认"
                 android:textColor="@color/black" />
 
@@ -34,6 +35,12 @@
                 android:background="@color/teal_700"
                 android:text="黑色" />
         </RadioGroup>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@mipmap/ic_launcher"
+            android:text="CheckBox" />
 
         <ImageView
             android:layout_width="wrap_content"
