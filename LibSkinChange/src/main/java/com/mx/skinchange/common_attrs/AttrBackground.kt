@@ -9,6 +9,7 @@ import com.mx.skinchange.factory.SkinResourceLoader
 
 open class AttrBackground(val view: View) : AttrBase {
     private var backgroundResId = AttrBase.INVALID_ID
+    private var backgroundTintResId = AttrBase.INVALID_ID
 
     override fun initAttrs(attrs: AttributeSet?, defStyleAttr: Int) {
         val a: TypedArray = view.context.obtainStyledAttributes(
@@ -18,10 +19,14 @@ open class AttrBackground(val view: View) : AttrBase {
         )
         try {
             backgroundResId = getResourceId(a, R.styleable.AttrBackground_android_background)
+            backgroundTintResId =
+                getResourceId(a, R.styleable.AttrBackground_android_backgroundTint)
         } finally {
             a.recycle()
         }
+
         applyAttrs()
+        applyBackgroundTintRes() // 只在初始化的时候运行一次
     }
 
     override fun applyAttrs() {
@@ -39,6 +44,18 @@ open class AttrBackground(val view: View) : AttrBase {
         val paddingBottom: Int = view.paddingBottom
         ViewCompat.setBackground(view, drawable)
         view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom)
+    }
+
+    private fun applyBackgroundTintRes() {
+        val resId = checkResourceId(backgroundTintResId)
+        if (resId == AttrBase.INVALID_ID) {
+            return
+        }
+        val colorStateList = SkinResourceLoader.loadColorStateList(
+            view.context,
+            resId
+        )
+        ViewCompat.setBackgroundTintList(view, colorStateList)
     }
 
     fun setBackgroundResource(res: Int) {

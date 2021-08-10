@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="AttrBackground">
         <attr name="android:background" />
+        <attr name="android:backgroundTint" />
     </declare-styleable>
     <declare-styleable name="AttrButton">
         <attr name="android:button" />
