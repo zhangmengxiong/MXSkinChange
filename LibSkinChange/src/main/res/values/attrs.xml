@@ -7,6 +7,10 @@
         <attr name="android:button" />
         <attr name="android:buttonTint" />
     </declare-styleable>
+    <declare-styleable name="AttrCheckTextView">
+        <attr name="android:checkMark" />
+        <attr name="android:checkMarkTint" />
+    </declare-styleable>
     <declare-styleable name="AttrTextView">
         <attr name="android:textColor" />
         <attr name="android:textColorHint" />

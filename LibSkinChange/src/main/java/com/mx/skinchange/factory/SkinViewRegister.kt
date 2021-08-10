@@ -31,6 +31,7 @@ object SkinViewRegister {
         registerDefault(CommonRadioButton::class.java)
         registerDefault(CommonRadioGroup::class.java)
         registerDefault(CommonCheckBox::class.java)
+        registerDefault(CommonCheckTextView::class.java)
     }
 
     private fun registerDefault(iSkinView: Class<out ISkinView>) {
