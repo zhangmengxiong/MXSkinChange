@@ -37,9 +37,10 @@ object SkinManager {
     /**
      * 加载皮肤
      */
-    fun loadSkin(skinName: String) {
+    fun loadSkin(skinName: String?) {
+        if (skinName == this.skinName) return
         this.skinName = skinName
-        sp.edit().putString(SKIN_NAME_SAVED, skinName).commit()
+        sp.edit().putString(SKIN_NAME_SAVED, skinName ?: "").commit()
         SkinObserver.notifyChange()
     }
 
@@ -47,9 +48,7 @@ object SkinManager {
      * 重置为默认皮肤
      */
     fun resetSkin() {
-        this.skinName = null
-        sp.edit().putString(SKIN_NAME_SAVED, "").commit()
-        SkinObserver.notifyChange()
+        loadSkin(null)
     }
 
     /**
