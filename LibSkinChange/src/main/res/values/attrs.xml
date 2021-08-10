@@ -37,4 +37,7 @@
         <attr name="android:thumb" />
         <attr name="android:thumbTint" />
     </declare-styleable>
+    <declare-styleable name="AttrCardView">
+        <attr name="cardBackgroundColor" />
+    </declare-styleable>
 </resources>

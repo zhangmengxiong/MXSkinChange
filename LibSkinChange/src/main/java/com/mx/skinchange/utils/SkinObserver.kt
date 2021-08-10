@@ -1,6 +1,6 @@
 package com.mx.skinchange.utils
 
-import com.mx.skinchange.common.ISkinChange
+import com.mx.skinchange.base.ISkinChange
 
 object SkinObserver {
     private val observerList = ArrayList<ISkinChange>()

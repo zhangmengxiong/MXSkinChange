@@ -7,7 +7,7 @@ import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.mx.skinchange.common.ISkinChange
+import com.mx.skinchange.base.ISkinChange
 import com.mx.skinchange.utils.SkinObserver
 
 class SkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {

@@ -5,7 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import androidx.appcompat.content.res.AppCompatResources
 import com.mx.skinchange.SkinManager
-import com.mx.skinchange.common.IResourceLoader
+import com.mx.skinchange.base.IResourceLoader
 import com.mx.skinchange.utils.Log
 import com.mx.skinchange.utils.SkinUtils
 

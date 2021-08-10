@@ -3,8 +3,9 @@ package com.mx.skinchange.factory
 import android.content.Context
 import android.util.AttributeSet
 import com.mx.skinchange.SkinManager
-import com.mx.skinchange.common.ISkinView
-import com.mx.skinchange.common_views.*
+import com.mx.skinchange.androidx.views.CommonCardView
+import com.mx.skinchange.base.ISkinView
+import com.mx.skinchange.common.views.*
 
 object SkinViewRegister {
     /**
@@ -35,6 +36,11 @@ object SkinViewRegister {
         registerDefault(CommonProgressBar::class.java)
         registerDefault(CommonRatingBar::class.java)
         registerDefault(CommonSeekBar::class.java)
+
+        try {
+            registerDefault(CommonCardView::class.java)
+        } catch (e: java.lang.Exception) {
+        }
     }
 
     private fun registerDefault(iSkinView: Class<out ISkinView>) {
