@@ -18,7 +18,7 @@ object SkinManager {
     val appContext: Application
         get() = application!!
 
-    private var skinName: String? = "dark"
+    private var skinName: String? = null
 
     fun init(application: Application) {
         this.application = application
