@@ -92,31 +92,29 @@ open class AttrProgressBar(val view: ProgressBar) : AttrBase {
      */
     private fun tileify(drawable: Drawable, clip: Boolean): Drawable {
         if (drawable is LayerDrawable) {
-            val background = drawable
-            val N = background.numberOfLayers
+            val N = drawable.numberOfLayers
             val outDrawables = arrayOfNulls<Drawable>(N)
             for (i in 0 until N) {
-                val id = background.getId(i)
+                val id = drawable.getId(i)
                 outDrawables[i] = tileify(
-                    background.getDrawable(i),
+                    drawable.getDrawable(i),
                     id == android.R.id.progress || id == android.R.id.secondaryProgress
                 )
             }
             val newBg = LayerDrawable(outDrawables)
             for (i in 0 until N) {
-                newBg.setId(i, background.getId(i))
+                newBg.setId(i, drawable.getId(i))
             }
             return newBg
         } else if (drawable is BitmapDrawable) {
-            val bitmapDrawable = drawable
-            val tileBitmap = bitmapDrawable.bitmap
+            val tileBitmap = drawable.bitmap
             val shapeDrawable = ShapeDrawable(getDrawableShape())
             val bitmapShader = BitmapShader(
                 tileBitmap,
                 Shader.TileMode.REPEAT, Shader.TileMode.CLAMP
             )
             shapeDrawable.paint.shader = bitmapShader
-            shapeDrawable.paint.colorFilter = bitmapDrawable.paint.colorFilter
+            shapeDrawable.paint.colorFilter = drawable.paint.colorFilter
             return if (clip) ClipDrawable(
                 shapeDrawable, Gravity.LEFT,
                 ClipDrawable.HORIZONTAL
@@ -131,19 +129,17 @@ open class AttrProgressBar(val view: ProgressBar) : AttrBase {
      * given a tiling BitmapShader.
      */
     private fun tileifyIndeterminate(drawable: Drawable): Drawable? {
-        var drawable: Drawable? = drawable
         if (drawable is AnimationDrawable) {
-            val background = drawable
-            val N = background.numberOfFrames
+            val N = drawable.numberOfFrames
             val newBg = AnimationDrawable()
-            newBg.isOneShot = background.isOneShot
+            newBg.isOneShot = drawable.isOneShot
             for (i in 0 until N) {
-                val frame = tileify(background.getFrame(i), true)
+                val frame = tileify(drawable.getFrame(i), true)
                 frame.level = 10000
-                newBg.addFrame(frame, background.getDuration(i))
+                newBg.addFrame(frame, drawable.getDuration(i))
             }
             newBg.level = 10000
-            drawable = newBg
+            return newBg
         }
         return drawable
     }
