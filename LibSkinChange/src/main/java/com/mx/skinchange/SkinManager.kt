@@ -20,6 +20,9 @@ object SkinManager {
 
     private var skinName: String? = null
 
+    /**
+     * 初始化
+     */
     fun init(application: Application) {
         this.application = application
         skinName = sp.getString(SKIN_NAME_SAVED, "")
@@ -31,11 +34,26 @@ object SkinManager {
         LayoutInflaterCompat.setFactory2(layoutInflater, factory)
     }
 
+    /**
+     * 加载皮肤
+     */
     fun loadSkin(skinName: String) {
         this.skinName = skinName
         sp.edit().putString(SKIN_NAME_SAVED, skinName).commit()
         SkinObserver.notifyChange()
     }
 
+    /**
+     * 重置为默认皮肤
+     */
+    fun resetSkin() {
+        this.skinName = null
+        sp.edit().putString(SKIN_NAME_SAVED, "").commit()
+        SkinObserver.notifyChange()
+    }
+
+    /**
+     * 获取皮肤名称
+     */
     fun getSkinName(): String = skinName ?: ""
 }
