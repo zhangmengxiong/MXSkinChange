@@ -25,5 +25,6 @@
     <declare-styleable name="AttrImageView">
         <attr name="android:src" />
         <attr name="android:tint" />
+        <attr name="tint" />
     </declare-styleable>
 </resources>

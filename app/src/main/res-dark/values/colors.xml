@@ -8,4 +8,5 @@
     <color name="black_dark">#FFFFFF</color>
     <color name="white_dark">#000000</color>
     <color name="focus_dark">#00FF16</color>
+    <color name="green_aa_dark">#EE0808</color>
 </resources>

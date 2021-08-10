@@ -20,6 +20,9 @@ open class AttrImageView(val view: CommonImageView) : AttrBase {
         try {
             srcResId = getResourceId(a, R.styleable.AttrImageView_android_src)
             srcTintResId = getResourceId(a, R.styleable.AttrImageView_android_tint)
+            if (srcTintResId == AttrBase.INVALID_ID) {
+                srcTintResId = getResourceId(a, R.styleable.AttrImageView_tint)
+            }
         } finally {
             a.recycle()
         }
