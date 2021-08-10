@@ -33,6 +33,8 @@ object SkinViewRegister {
         registerDefault(CommonCheckBox::class.java)
         registerDefault(CommonCheckTextView::class.java)
         registerDefault(CommonProgressBar::class.java)
+        registerDefault(CommonRatingBar::class.java)
+        registerDefault(CommonSeekBar::class.java)
     }
 
     private fun registerDefault(iSkinView: Class<out ISkinView>) {

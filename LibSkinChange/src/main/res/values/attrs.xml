@@ -33,4 +33,8 @@
         <attr name="android:progressDrawable" />
         <attr name="android:indeterminateTint" />
     </declare-styleable>
+    <declare-styleable name="AttrSeekBar">
+        <attr name="android:thumb" />
+        <attr name="android:thumbTint" />
+    </declare-styleable>
 </resources>

@@ -20,7 +20,7 @@ open class CommonRadioButton @JvmOverloads constructor(
 ) : androidx.appcompat.widget.AppCompatRadioButton(
     context,
     attrs,
-    if (defStyleAttr == 0) R.attr.radioButtonStyle else defStyleAttr
+    if (defStyleAttr == 0) android.R.attr.radioButtonStyle else defStyleAttr
 ), ISkinView {
 
     private val attrBackground by lazy { AttrBackground(this) }
@@ -28,7 +28,7 @@ open class CommonRadioButton @JvmOverloads constructor(
     private val attrTextView by lazy { AttrTextView(this) }
 
     init {
-        val defStyleAttr = if (defStyleAttr == 0) R.attr.radioButtonStyle else defStyleAttr
+        val defStyleAttr = if (defStyleAttr == 0) android.R.attr.radioButtonStyle else defStyleAttr
         attrBackground.initAttrs(attrs, defStyleAttr)
         attrButton.initAttrs(attrs, defStyleAttr)
         attrTextView.initAttrs(attrs, defStyleAttr)

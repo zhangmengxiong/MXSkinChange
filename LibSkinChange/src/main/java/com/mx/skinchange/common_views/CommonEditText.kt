@@ -13,14 +13,14 @@ class CommonEditText @JvmOverloads constructor(
 ) : androidx.appcompat.widget.AppCompatEditText(
     context,
     attrs,
-    if (defStyleAttr == 0) R.attr.editTextStyle else defStyleAttr
+    if (defStyleAttr == 0) android.R.attr.editTextStyle else defStyleAttr
 ), ISkinView {
 
     private val attrBackground by lazy { AttrBackground(this) }
     private val attrTextView by lazy { AttrTextView(this) }
 
     init {
-        val defStyleAttr = if (defStyleAttr == 0) R.attr.editTextStyle else defStyleAttr
+        val defStyleAttr = if (defStyleAttr == 0) android.R.attr.editTextStyle else defStyleAttr
         attrBackground.initAttrs(attrs, defStyleAttr)
         attrTextView.initAttrs(attrs, defStyleAttr)
     }

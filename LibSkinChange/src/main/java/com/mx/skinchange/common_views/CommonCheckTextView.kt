@@ -15,7 +15,7 @@ class CommonCheckTextView @JvmOverloads constructor(
 ) : androidx.appcompat.widget.AppCompatCheckedTextView(
     context,
     attrs,
-    if (defStyleAttr == 0) R.attr.checkboxStyle else defStyleAttr
+    if (defStyleAttr == 0) android.R.attr.checkboxStyle else defStyleAttr
 ), ISkinView {
 
     private val attrBackground by lazy { AttrBackground(this) }
@@ -23,7 +23,7 @@ class CommonCheckTextView @JvmOverloads constructor(
     private val attrTextView by lazy { AttrTextView(this) }
 
     init {
-        val defStyleAttr = if (defStyleAttr == 0) R.attr.checkboxStyle else defStyleAttr
+        val defStyleAttr = if (defStyleAttr == 0) android.R.attr.checkboxStyle else defStyleAttr
         attrBackground.initAttrs(attrs, defStyleAttr)
         attrCheckedTextView.initAttrs(attrs, defStyleAttr)
         attrTextView.initAttrs(attrs, defStyleAttr)
