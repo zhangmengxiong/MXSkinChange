@@ -7,7 +7,7 @@ import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_attrs.AttrBackground
 import com.mx.skinchange.common_attrs.AttrImageView
 
-class CommonImageView @JvmOverloads constructor(
+open class CommonImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : androidx.appcompat.widget.AppCompatImageView(context, attrs, defStyleAttr), ISkinView {
 

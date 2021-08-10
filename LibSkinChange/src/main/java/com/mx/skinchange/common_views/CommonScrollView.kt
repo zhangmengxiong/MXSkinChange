@@ -8,7 +8,7 @@ import android.widget.ScrollView
 import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_attrs.AttrBackground
 
-class CommonScrollView @JvmOverloads constructor(
+open class CommonScrollView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ScrollView(context, attrs, defStyleAttr), ISkinView {
 

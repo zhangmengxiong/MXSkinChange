@@ -14,7 +14,7 @@ import com.mx.skinchange.common_attrs.AttrTextView
  * 1：背景变换
  * 2：文字颜色、文字Hint颜色、四边Drawable变化
  */
-class CommonButton @JvmOverloads constructor(
+open class CommonButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : androidx.appcompat.widget.AppCompatButton(context, attrs, defStyleAttr), ISkinView {
 

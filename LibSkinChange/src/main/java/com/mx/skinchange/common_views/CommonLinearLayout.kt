@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_attrs.AttrBackground
 
-class CommonLinearLayout @JvmOverloads constructor(
+open class CommonLinearLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr), ISkinView {
 

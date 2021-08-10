@@ -9,13 +9,18 @@ import com.mx.skinchange.common_attrs.AttrBackground
 import com.mx.skinchange.common_attrs.AttrTextView
 
 class CommonEditText @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.editTextStyle
-) : androidx.appcompat.widget.AppCompatEditText(context, attrs, defStyleAttr), ISkinView {
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+) : androidx.appcompat.widget.AppCompatEditText(
+    context,
+    attrs,
+    if (defStyleAttr == 0) R.attr.editTextStyle else defStyleAttr
+), ISkinView {
 
     private val attrBackground by lazy { AttrBackground(this) }
     private val attrTextView by lazy { AttrTextView(this) }
 
     init {
+        val defStyleAttr = if (defStyleAttr == 0) R.attr.editTextStyle else defStyleAttr
         attrBackground.initAttrs(attrs, defStyleAttr)
         attrTextView.initAttrs(attrs, defStyleAttr)
     }

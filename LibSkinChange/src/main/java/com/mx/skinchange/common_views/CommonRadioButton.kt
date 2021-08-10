@@ -3,24 +3,39 @@ package com.mx.skinchange.common_views
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import com.mx.skinchange.R
 import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_attrs.AttrBackground
+import com.mx.skinchange.common_attrs.AttrButton
 import com.mx.skinchange.common_attrs.AttrTextView
 
-open class CommonTextView @JvmOverloads constructor(
+/**
+ * Button控件
+ * 支持：
+ * 1：背景变换
+ * 2：文字颜色、文字Hint颜色、四边Drawable变化
+ */
+open class CommonRadioButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : androidx.appcompat.widget.AppCompatTextView(context, attrs, defStyleAttr), ISkinView {
+) : androidx.appcompat.widget.AppCompatRadioButton(
+    context,
+    attrs,
+    if (defStyleAttr == 0) R.attr.radioButtonStyle else defStyleAttr
+), ISkinView {
 
     private val attrBackground by lazy { AttrBackground(this) }
+    private val attrButton by lazy { AttrButton(this) }
     private val attrTextView by lazy { AttrTextView(this) }
 
     init {
+        val defStyleAttr = if (defStyleAttr == 0) R.attr.radioButtonStyle else defStyleAttr
         attrBackground.initAttrs(attrs, defStyleAttr)
+        attrButton.initAttrs(attrs, defStyleAttr)
         attrTextView.initAttrs(attrs, defStyleAttr)
     }
 
     override fun getName(): String {
-        return "TextView"
+        return "RadioButton"
     }
 
     override fun getSelfView(): View {
@@ -29,11 +44,17 @@ open class CommonTextView @JvmOverloads constructor(
 
     override fun onChange() {
         attrBackground.applyAttrs()
+        attrButton.applyAttrs()
         attrTextView.applyAttrs()
     }
 
+    override fun setButtonDrawable(resId: Int) {
+        super.setButtonDrawable(resId)
+        attrButton.setButtonDrawable(resId)
+    }
+
     override fun setTextAppearance(resId: Int) {
-        this.setTextAppearance(context, resId)
+        setTextAppearance(context, resId)
     }
 
     override fun setTextAppearance(context: Context?, resId: Int) {

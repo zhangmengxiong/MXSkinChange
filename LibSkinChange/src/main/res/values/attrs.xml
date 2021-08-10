@@ -3,6 +3,10 @@
     <declare-styleable name="AttrBackground">
         <attr name="android:background" />
     </declare-styleable>
+    <declare-styleable name="AttrButton">
+        <attr name="android:button" />
+        <attr name="android:buttonTint" />
+    </declare-styleable>
     <declare-styleable name="AttrTextView">
         <attr name="android:textColor" />
         <attr name="android:textColorHint" />

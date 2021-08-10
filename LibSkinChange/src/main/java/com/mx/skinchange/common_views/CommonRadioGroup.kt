@@ -3,13 +3,14 @@ package com.mx.skinchange.common_views
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.RelativeLayout
+import android.widget.FrameLayout
+import android.widget.RadioGroup
 import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_attrs.AttrBackground
 
-open class CommonRelativeLayout @JvmOverloads constructor(
+open class CommonRadioGroup @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr), ISkinView {
+) : RadioGroup(context, attrs), ISkinView {
 
     private val attrBackground by lazy { AttrBackground(this) }
 
@@ -18,7 +19,7 @@ open class CommonRelativeLayout @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "RelativeLayout"
+        return "RadioGroup"
     }
 
     override fun getSelfView(): View {

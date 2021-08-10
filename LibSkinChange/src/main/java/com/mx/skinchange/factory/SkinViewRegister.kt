@@ -29,6 +29,8 @@ object SkinViewRegister {
         registerDefault(CommonScrollView::class.java)
         registerDefault(CommonHorizontalScrollView::class.java)
         registerDefault(CommonEditText::class.java)
+        registerDefault(CommonRadioButton::class.java)
+        registerDefault(CommonRadioGroup::class.java)
     }
 
     private fun registerDefault(iSkinView: Class<out ISkinView>) {

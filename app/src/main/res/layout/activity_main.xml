@@ -17,18 +17,21 @@
             android:id="@+id/skinTypeGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/purple_200"
             android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/defaultSkin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="默认" />
+                android:text="默认"
+                android:textColor="@color/black" />
 
             <RadioButton
                 android:id="@+id/darkSkin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/teal_700"
                 android:text="黑色" />
         </RadioGroup>
 
@@ -64,33 +67,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/text_background"
             android:drawableLeft="@mipmap/ic_launcher"
-            android:drawableTop="@mipmap/ic_launcher"
             android:drawableRight="@mipmap/ic_launcher"
-            android:drawableBottom="@mipmap/ic_launcher"
             android:gravity="center"
             android:padding="10dp"
             android:text="Hello World!"
             android:textColor="@color/focus" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/purple_200"
-            android:text="测试"
-            android:textColor="@color/black" />
-
-        <com.mx.skinchange.common_views.CommonEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/purple_200"
-            android:text="测试"
-            android:textColor="@color/black" />
 
         <EditText
             android:layout_width="match_parent"

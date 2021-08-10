@@ -9,7 +9,7 @@ import android.widget.ScrollView
 import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_attrs.AttrBackground
 
-class CommonHorizontalScrollView @JvmOverloads constructor(
+open class CommonHorizontalScrollView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : HorizontalScrollView(context, attrs, defStyleAttr), ISkinView {
 

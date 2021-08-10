@@ -7,7 +7,7 @@ import android.widget.FrameLayout
 import com.mx.skinchange.common.ISkinView
 import com.mx.skinchange.common_attrs.AttrBackground
 
-class CommonView @JvmOverloads constructor(
+open class CommonView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr), ISkinView {
 
