@@ -41,7 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@mipmap/ic_launcher"
-            android:text="CheckBox" />
+            android:text="CheckBox"
+            android:textColor="@color/black" />
 
         <CheckedTextView
             android:layout_width="wrap_content"

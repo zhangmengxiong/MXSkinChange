@@ -18,13 +18,16 @@ open class MXSkinRatingBar @JvmOverloads constructor(
     if (defStyleAttr == 0) android.R.attr.ratingBarStyle else defStyleAttr
 ), ISkinView {
 
-    private val attrBackground by lazy { AttrBackground(this) }
-    private val attrProgressBar by lazy { AttrProgressBar(this) }
+    private var attrBackground: AttrBackground? = null
+    private var attrProgressBar: AttrProgressBar? = null
 
     init {
         val defStyleAttr = if (defStyleAttr == 0) android.R.attr.ratingBarStyle else defStyleAttr
-        attrBackground.initAttrs(attrs, defStyleAttr)
-        attrProgressBar.initAttrs(attrs, defStyleAttr)
+        attrBackground = AttrBackground(this)
+        attrProgressBar = AttrProgressBar(this)
+
+        attrBackground?.initAttrs(attrs, defStyleAttr)
+        attrProgressBar?.initAttrs(attrs, defStyleAttr)
     }
 
     override fun getName(): String {
@@ -36,47 +39,47 @@ open class MXSkinRatingBar @JvmOverloads constructor(
     }
 
     override fun onSkinChange() {
-        attrBackground.applyAttrs()
+        attrBackground?.applyAttrs()
     }
 
     override fun setBackgroundResource(resid: Int) {
         super.setBackgroundResource(resid)
-        attrBackground.setBackgroundResource(resid)
+        attrBackground?.setBackgroundResource(resid)
     }
 
     override fun setBackgroundTintList(tint: ColorStateList?) {
         super.setBackgroundTintList(tint)
-        attrBackground.setBackgroundTintList(tint)
+        attrBackground?.setBackgroundTintList(tint)
     }
 
     override fun setForeground(foreground: Drawable?) {
         super.setForeground(foreground)
-        attrBackground.setForeground(foreground)
+        attrBackground?.setForeground(foreground)
     }
 
     override fun setForegroundTintList(tint: ColorStateList?) {
         super.setForegroundTintList(tint)
-        attrBackground.setForegroundTintList(tint)
+        attrBackground?.setForegroundTintList(tint)
     }
 
     override fun setIndeterminateDrawable(d: Drawable?) {
         super.setIndeterminateDrawable(d)
-        attrProgressBar.setIndeterminateDrawable(d)
+        attrProgressBar?.setIndeterminateDrawable(d)
     }
 
     override fun setIndeterminateTintList(tint: ColorStateList?) {
         super.setIndeterminateTintList(tint)
-        attrProgressBar.setIndeterminateTintList(tint)
+        attrProgressBar?.setIndeterminateTintList(tint)
     }
 
     override fun setProgressDrawable(d: Drawable?) {
         super.setProgressDrawable(d)
-        attrProgressBar.setProgressDrawable(d)
+        attrProgressBar?.setProgressDrawable(d)
     }
 
     override fun setProgressTintList(tint: ColorStateList?) {
         super.setProgressTintList(tint)
-        attrProgressBar.setProgressTintList(tint)
+        attrProgressBar?.setProgressTintList(tint)
     }
 
     override fun onAttachedToWindow() {

@@ -109,4 +109,8 @@ class AttrItem {
     fun disable() {
         isAttrEnable = false
     }
+
+    fun enable() {
+        isAttrEnable = true
+    }
 }

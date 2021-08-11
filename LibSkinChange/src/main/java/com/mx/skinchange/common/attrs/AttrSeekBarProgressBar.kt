@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import android.widget.SeekBar
 import com.mx.skinchange.R
 import com.mx.skinchange.models.AttrItem
-import com.mx.skinchange.models.AttrType
+import com.mx.skinchange.utils.MXSkinUtils
 
 open class AttrSeekBarProgressBar(private val seekBar: SeekBar) : AttrProgressBar(seekBar) {
     private val thumbDrawableAttr = AttrItem()
@@ -28,6 +28,8 @@ open class AttrSeekBarProgressBar(private val seekBar: SeekBar) : AttrProgressBa
         }
         thumbDrawableAttr.onApplyDrawable { drawable ->
             seekBar.thumb = drawable
+
+            MXSkinUtils.log("AttrSeekBarProgressBar -- onApplyDrawable")
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -40,11 +42,16 @@ open class AttrSeekBarProgressBar(private val seekBar: SeekBar) : AttrProgressBa
     }
 
     override fun applyAttrs() {
+        super.applyAttrs()
+
         thumbDrawableAttr.apply(view.context)
         thumbTintAttr.apply(view.context)
+
+        MXSkinUtils.log("AttrSeekBarProgressBar -- applyAttrs")
     }
 
     fun setThumb(thumb: Drawable?) {
+        MXSkinUtils.log("AttrSeekBarProgressBar -- setThumb")
         thumbDrawableAttr.disable()
     }
 

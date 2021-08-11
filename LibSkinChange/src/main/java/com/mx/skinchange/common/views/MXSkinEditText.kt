@@ -17,14 +17,16 @@ open class MXSkinEditText @JvmOverloads constructor(
     attrs,
     if (defStyleAttr == 0) android.R.attr.editTextStyle else defStyleAttr
 ), ISkinView {
-
-    private val attrBackground by lazy { AttrBackground(this) }
-    private val attrTextView by lazy { AttrTextView(this) }
+    private var attrBackground: AttrBackground? = null
+    private var attrTextView: AttrTextView? = null
 
     init {
         val defStyleAttr = if (defStyleAttr == 0) android.R.attr.editTextStyle else defStyleAttr
-        attrBackground.initAttrs(attrs, defStyleAttr)
-        attrTextView.initAttrs(attrs, defStyleAttr)
+        attrBackground = AttrBackground(this)
+        attrBackground?.initAttrs(attrs, defStyleAttr)
+        
+        attrTextView = AttrTextView(this)
+        attrTextView?.initAttrs(attrs, defStyleAttr)
     }
 
     override fun getName(): String {
@@ -36,8 +38,8 @@ open class MXSkinEditText @JvmOverloads constructor(
     }
 
     override fun onSkinChange() {
-        attrBackground.applyAttrs()
-        attrTextView.applyAttrs()
+        attrBackground?.applyAttrs()
+        attrTextView?.applyAttrs()
     }
 
     override fun setTextAppearance(resId: Int) {
@@ -46,7 +48,7 @@ open class MXSkinEditText @JvmOverloads constructor(
 
     override fun setTextAppearance(context: Context?, resId: Int) {
         super.setTextAppearance(context, resId)
-        attrTextView.setTextAppearance(resId)
+        attrTextView?.setTextAppearance(resId)
     }
 
     override fun setCompoundDrawablesRelativeWithIntrinsicBounds(
@@ -56,7 +58,7 @@ open class MXSkinEditText @JvmOverloads constructor(
         bottom: Int
     ) {
         super.setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
-        attrTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
+        attrTextView?.setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
     }
 
     override fun setCompoundDrawablesWithIntrinsicBounds(
@@ -66,7 +68,7 @@ open class MXSkinEditText @JvmOverloads constructor(
         bottom: Int
     ) {
         super.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
-        attrTextView.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
+        attrTextView?.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
     }
 
     override fun setCompoundDrawables(
@@ -76,7 +78,7 @@ open class MXSkinEditText @JvmOverloads constructor(
         bottom: Drawable?
     ) {
         super.setCompoundDrawables(left, top, right, bottom)
-        attrTextView.disableCompoundDrawables()
+        attrTextView?.disableCompoundDrawables()
     }
 
     override fun setCompoundDrawablesWithIntrinsicBounds(
@@ -86,27 +88,27 @@ open class MXSkinEditText @JvmOverloads constructor(
         bottom: Drawable?
     ) {
         super.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
-        attrTextView.disableCompoundDrawables()
+        attrTextView?.disableCompoundDrawables()
     }
 
     override fun setBackgroundResource(resid: Int) {
         super.setBackgroundResource(resid)
-        attrBackground.setBackgroundResource(resid)
+        attrBackground?.setBackgroundResource(resid)
     }
 
     override fun setBackgroundTintList(tint: ColorStateList?) {
         super.setBackgroundTintList(tint)
-        attrBackground.setBackgroundTintList(tint)
+        attrBackground?.setBackgroundTintList(tint)
     }
 
     override fun setForeground(foreground: Drawable?) {
         super.setForeground(foreground)
-        attrBackground.setForeground(foreground)
+        attrBackground?.setForeground(foreground)
     }
 
     override fun setForegroundTintList(tint: ColorStateList?) {
         super.setForegroundTintList(tint)
-        attrBackground.setForegroundTintList(tint)
+        attrBackground?.setForegroundTintList(tint)
     }
 
     override fun onAttachedToWindow() {

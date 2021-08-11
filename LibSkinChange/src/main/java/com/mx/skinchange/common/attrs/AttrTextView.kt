@@ -103,6 +103,11 @@ open class AttrTextView(val view: TextView) : BaseAttr {
         val bottom = drawableBottomAttr.getDrawable(view.context)
 
         view.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
+
+        drawableLeftAttr.enable()
+        drawableTopAttr.enable()
+        drawableRightAttr.enable()
+        drawableBottomAttr.enable()
     }
 
     fun disableCompoundDrawables() {
