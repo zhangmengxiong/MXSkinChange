@@ -13,13 +13,15 @@ import com.mx.skinchange.utils.MXSkinObserver
 open class MXSkinImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : androidx.appcompat.widget.AppCompatImageView(context, attrs, defStyleAttr), ISkinView {
-
-    private val attrBackground by lazy { AttrBackground(this) }
-    private val attrImageView by lazy { AttrImageView(this) }
+    private var attrBackground: AttrBackground? = null
+    private var attrImageView: AttrImageView? = null
 
     init {
-        attrBackground.initAttrs(attrs, defStyleAttr)
-        attrImageView.initAttrs(attrs, defStyleAttr)
+        attrBackground = AttrBackground(this)
+        attrBackground?.initAttrs(attrs, defStyleAttr)
+
+        attrImageView = AttrImageView(this)
+        attrImageView?.initAttrs(attrs, defStyleAttr)
     }
 
     override fun getName(): String {
@@ -31,38 +33,38 @@ open class MXSkinImageView @JvmOverloads constructor(
     }
 
     override fun onSkinChange() {
-        attrBackground.applyAttrs()
-        attrImageView.applyAttrs()
+        attrBackground?.applyAttrs()
+        attrImageView?.applyAttrs()
     }
 
     override fun setImageResource(resId: Int) {
         super.setImageResource(resId)
-        attrImageView.setImageResource(resId)
+        attrImageView?.setImageResource(resId)
     }
 
     override fun setImageTintList(tint: ColorStateList?) {
         super.setImageTintList(tint)
-        attrImageView.setImageTintList(tint)
+        attrImageView?.setImageTintList(tint)
     }
 
     override fun setBackgroundResource(resid: Int) {
         super.setBackgroundResource(resid)
-        attrBackground.setBackgroundResource(resid)
+        attrBackground?.setBackgroundResource(resid)
     }
 
     override fun setBackgroundTintList(tint: ColorStateList?) {
         super.setBackgroundTintList(tint)
-        attrBackground.setBackgroundTintList(tint)
+        attrBackground?.setBackgroundTintList(tint)
     }
 
     override fun setForeground(foreground: Drawable?) {
         super.setForeground(foreground)
-        attrBackground.setForeground(foreground)
+        attrBackground?.setForeground(foreground)
     }
 
     override fun setForegroundTintList(tint: ColorStateList?) {
         super.setForegroundTintList(tint)
-        attrBackground.setForegroundTintList(tint)
+        attrBackground?.setForegroundTintList(tint)
     }
 
     override fun onAttachedToWindow() {

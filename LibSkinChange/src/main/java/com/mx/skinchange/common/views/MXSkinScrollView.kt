@@ -14,10 +14,11 @@ open class MXSkinScrollView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ScrollView(context, attrs, defStyleAttr), ISkinView {
 
-    private val attrBackground by lazy { AttrBackground(this) }
+    private var attrBackground: AttrBackground? = null
 
     init {
-        attrBackground.initAttrs(attrs, defStyleAttr)
+        attrBackground = AttrBackground(this)
+        attrBackground?.initAttrs(attrs, defStyleAttr)
     }
 
     override fun getName(): String {
@@ -29,27 +30,27 @@ open class MXSkinScrollView @JvmOverloads constructor(
     }
 
     override fun onSkinChange() {
-        attrBackground.applyAttrs()
+        attrBackground?.applyAttrs()
     }
 
     override fun setBackgroundResource(resid: Int) {
         super.setBackgroundResource(resid)
-        attrBackground.setBackgroundResource(resid)
+        attrBackground?.setBackgroundResource(resid)
     }
 
     override fun setBackgroundTintList(tint: ColorStateList?) {
         super.setBackgroundTintList(tint)
-        attrBackground.setBackgroundTintList(tint)
+        attrBackground?.setBackgroundTintList(tint)
     }
 
     override fun setForeground(foreground: Drawable?) {
         super.setForeground(foreground)
-        attrBackground.setForeground(foreground)
+        attrBackground?.setForeground(foreground)
     }
 
     override fun setForegroundTintList(tint: ColorStateList?) {
         super.setForegroundTintList(tint)
-        attrBackground.setForegroundTintList(tint)
+        attrBackground?.setForegroundTintList(tint)
     }
 
     override fun onAttachedToWindow() {

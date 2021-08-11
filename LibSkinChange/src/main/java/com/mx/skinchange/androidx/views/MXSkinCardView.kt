@@ -1,6 +1,7 @@
 package com.mx.skinchange.androidx.views
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.view.View
 import androidx.cardview.widget.CardView
@@ -12,10 +13,11 @@ open class MXSkinCardView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : CardView(context, attrs, defStyleAttr), ISkinView {
 
-    private val attrBackground by lazy { AttrCardView(this) }
+    private var attrBackground: AttrCardView? = null
 
     init {
-        attrBackground.initAttrs(attrs, defStyleAttr)
+        attrBackground = AttrCardView(this)
+        attrBackground?.initAttrs(attrs, defStyleAttr)
     }
 
     override fun getName(): String {
@@ -27,7 +29,17 @@ open class MXSkinCardView @JvmOverloads constructor(
     }
 
     override fun onSkinChange() {
-        attrBackground.applyAttrs()
+        attrBackground?.applyAttrs()
+    }
+
+    override fun setCardBackgroundColor(color: ColorStateList?) {
+        super.setCardBackgroundColor(color)
+        attrBackground?.setCardBackgroundColor(color)
+    }
+
+    override fun setCardBackgroundColor(color: Int) {
+        super.setCardBackgroundColor(color)
+        attrBackground?.setCardBackgroundColor(color)
     }
 
     override fun onAttachedToWindow() {
