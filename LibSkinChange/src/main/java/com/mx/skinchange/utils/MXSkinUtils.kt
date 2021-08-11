@@ -1,8 +1,9 @@
 package com.mx.skinchange.utils
 
 import android.content.Context
+import com.mx.skinchange.BuildConfig
 
-object SkinUtils {
+object MXSkinUtils {
     fun getResourceNameById(context: Context, resId: Int): String? {
         try {
             return context.resources.getResourceName(resId)
@@ -17,5 +18,11 @@ object SkinUtils {
         } catch (e: Exception) {
         }
         return null
+    }
+
+    fun log(message: String) {
+        if (BuildConfig.DEBUG) {
+            android.util.Log.v(this::class.java.simpleName, message)
+        }
     }
 }

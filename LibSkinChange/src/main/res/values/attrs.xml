@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AttrBackground">
+        <attr name="android:foreground" />
+        <attr name="android:foregroundTint" />
         <attr name="android:background" />
         <attr name="android:backgroundTint" />
     </declare-styleable>
@@ -30,8 +32,9 @@
 
     <declare-styleable name="AttrProgressBar">
         <attr name="android:indeterminateDrawable" />
-        <attr name="android:progressDrawable" />
         <attr name="android:indeterminateTint" />
+        <attr name="android:progressDrawable" />
+        <attr name="android:progressTint" />
     </declare-styleable>
     <declare-styleable name="AttrSeekBar">
         <attr name="android:thumb" />

@@ -4,15 +4,17 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.widget.TextView
 import com.mx.skinchange.R
-import com.mx.skinchange.factory.SkinResourceLoader
+import com.mx.skinchange.base.BaseAttr
+import com.mx.skinchange.models.AttrItem
 
-open class AttrTextView(val view: TextView) : com.mx.skinchange.base.AttrBase {
-    private var textColorResId = AttrBase.INVALID_ID
-    private var textColorHintResId = AttrBase.INVALID_ID
-    private var mDrawableBottomResId: Int = AttrBase.INVALID_ID
-    private var mDrawableLeftResId: Int = AttrBase.INVALID_ID
-    private var mDrawableRightResId: Int = AttrBase.INVALID_ID
-    private var mDrawableTopResId: Int = AttrBase.INVALID_ID
+open class AttrTextView(val view: TextView) : BaseAttr {
+    private val textColorAttr = AttrItem()
+    private val textColorHintAttr = AttrItem()
+
+    private val drawableLeftAttr = AttrItem()
+    private val drawableTopAttr = AttrItem()
+    private val drawableRightAttr = AttrItem()
+    private val drawableBottomAttr = AttrItem()
 
     override fun initAttrs(attrs: AttributeSet?, defStyleAttr: Int) {
         val a: TypedArray = view.context.obtainStyledAttributes(
@@ -21,47 +23,38 @@ open class AttrTextView(val view: TextView) : com.mx.skinchange.base.AttrBase {
             defStyleAttr, 0
         )
         try {
-            textColorResId = getResourceId(a, R.styleable.AttrTextView_android_textColor)
-            textColorHintResId = getResourceId(a, R.styleable.AttrTextView_android_textColorHint)
+            textColorAttr.init(a, R.styleable.AttrTextView_android_textColor)
+            textColorHintAttr.init(a, R.styleable.AttrTextView_android_textColorHint)
 
-            mDrawableLeftResId = getResourceId(a, R.styleable.AttrTextView_android_drawableLeft)
-            if (mDrawableLeftResId == AttrBase.INVALID_ID) {
-                getResourceId(a, R.styleable.AttrTextView_android_drawableStart)
-            }
-            mDrawableTopResId = getResourceId(a, R.styleable.AttrTextView_android_drawableTop)
-            mDrawableRightResId = getResourceId(a, R.styleable.AttrTextView_android_drawableRight)
-            if (mDrawableRightResId == AttrBase.INVALID_ID) {
-                getResourceId(a, R.styleable.AttrTextView_android_drawableEnd)
-            }
-            mDrawableBottomResId = getResourceId(a, R.styleable.AttrTextView_android_drawableBottom)
+            drawableLeftAttr.init(
+                a, R.styleable.AttrTextView_android_drawableLeft,
+                R.styleable.AttrTextView_android_drawableStart
+            )
+            drawableTopAttr.init(a, R.styleable.AttrTextView_android_drawableTop)
+            drawableRightAttr.init(
+                a,
+                R.styleable.AttrTextView_android_drawableRight,
+                R.styleable.AttrTextView_android_drawableEnd
+            )
+            drawableBottomAttr.init(a, R.styleable.AttrTextView_android_drawableBottom)
         } finally {
             a.recycle()
         }
+
+        textColorAttr.onApplyColorStateList { colorStateList ->
+            view.setTextColor(colorStateList)
+        }
+        textColorHintAttr.onApplyColorStateList { colorStateList ->
+            view.setHintTextColor(colorStateList)
+        }
+
         applyAttrs()
     }
 
     override fun applyAttrs() {
-        applyTextColor()
-        applyTextColorHint()
+        textColorAttr.apply(view.context)
+        textColorHintAttr.apply(view.context)
         applyDrawableRound()
-    }
-
-
-    private fun applyTextColor() {
-        val resId = checkResourceId(textColorResId)
-        if (resId == AttrBase.INVALID_ID) {
-            return
-        }
-        view.setTextColor(SkinResourceLoader.loadColorStateList(view.context, resId))
-    }
-
-    private fun applyTextColorHint() {
-        val resId = checkResourceId(textColorHintResId)
-        if (resId == AttrBase.INVALID_ID) {
-            return
-        }
-
-        view.setHintTextColor(SkinResourceLoader.loadColorStateList(view.context, resId))
     }
 
     fun setTextAppearance(resId: Int) {
@@ -69,8 +62,8 @@ open class AttrTextView(val view: TextView) : com.mx.skinchange.base.AttrBase {
             resId, R.styleable.AttrTextView
         )
         try {
-            textColorResId = getResourceId(a, R.styleable.AttrTextView_android_textColor)
-            textColorHintResId = getResourceId(a, R.styleable.AttrTextView_android_textColorHint)
+            textColorAttr.init(a, R.styleable.AttrTextView_android_textColor)
+            textColorHintAttr.init(a, R.styleable.AttrTextView_android_textColorHint)
         } finally {
             a.recycle()
         }
@@ -83,10 +76,10 @@ open class AttrTextView(val view: TextView) : com.mx.skinchange.base.AttrBase {
         end: Int,
         bottom: Int
     ) {
-        mDrawableLeftResId = start
-        mDrawableTopResId = top
-        mDrawableRightResId = end
-        mDrawableBottomResId = bottom
+        drawableLeftAttr.setResourceId(start)
+        drawableTopAttr.setResourceId(top)
+        drawableRightAttr.setResourceId(end)
+        drawableBottomAttr.setResourceId(bottom)
         applyDrawableRound()
     }
 
@@ -96,39 +89,26 @@ open class AttrTextView(val view: TextView) : com.mx.skinchange.base.AttrBase {
         right: Int,
         bottom: Int
     ) {
-        mDrawableLeftResId = left
-        mDrawableTopResId = top
-        mDrawableRightResId = right
-        mDrawableBottomResId = bottom
+        drawableLeftAttr.setResourceId(left)
+        drawableTopAttr.setResourceId(top)
+        drawableRightAttr.setResourceId(right)
+        drawableBottomAttr.setResourceId(bottom)
         applyDrawableRound()
     }
 
     private fun applyDrawableRound() {
-        val left = if (mDrawableLeftResId != AttrBase.INVALID_ID) {
-            SkinResourceLoader.loadDrawable(
-                view.context,
-                mDrawableLeftResId
-            )
-        } else null
-        val top = if (mDrawableTopResId != AttrBase.INVALID_ID) {
-            SkinResourceLoader.loadDrawable(
-                view.context,
-                mDrawableTopResId
-            )
-        } else null
-        val right = if (mDrawableRightResId != AttrBase.INVALID_ID) {
-            SkinResourceLoader.loadDrawable(
-                view.context,
-                mDrawableRightResId
-            )
-        } else null
-        val bottom = if (mDrawableBottomResId != AttrBase.INVALID_ID) {
-            SkinResourceLoader.loadDrawable(
-                view.context,
-                mDrawableBottomResId
-            )
-        } else null
+        val left = drawableLeftAttr.getDrawable(view.context)
+        val top = drawableTopAttr.getDrawable(view.context)
+        val right = drawableRightAttr.getDrawable(view.context)
+        val bottom = drawableBottomAttr.getDrawable(view.context)
 
         view.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
+    }
+
+    fun disableCompoundDrawables() {
+        drawableLeftAttr.disable()
+        drawableTopAttr.disable()
+        drawableRightAttr.disable()
+        drawableBottomAttr.disable()
     }
 }

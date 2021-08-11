@@ -1,11 +1,14 @@
 package com.mx.skinchange.common.views
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.attrs.AttrBackground
 import com.mx.skinchange.common.attrs.AttrTextView
+import com.mx.skinchange.utils.MXSkinObserver
 
 /**
  * Button控件
@@ -13,7 +16,7 @@ import com.mx.skinchange.common.attrs.AttrTextView
  * 1：背景变换
  * 2：文字颜色、文字Hint颜色、四边Drawable变化
  */
-open class CommonButton @JvmOverloads constructor(
+open class MXSkinButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : androidx.appcompat.widget.AppCompatButton(context, attrs, defStyleAttr), ISkinView {
 
@@ -33,7 +36,7 @@ open class CommonButton @JvmOverloads constructor(
         return this
     }
 
-    override fun onChange() {
+    override fun onSkinChange() {
         attrBackground.applyAttrs()
         attrTextView.applyAttrs()
     }
@@ -67,8 +70,57 @@ open class CommonButton @JvmOverloads constructor(
         attrTextView.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
     }
 
+    override fun setCompoundDrawables(
+        left: Drawable?,
+        top: Drawable?,
+        right: Drawable?,
+        bottom: Drawable?
+    ) {
+        super.setCompoundDrawables(left, top, right, bottom)
+        attrTextView.disableCompoundDrawables()
+    }
+
+    override fun setCompoundDrawablesWithIntrinsicBounds(
+        left: Drawable?,
+        top: Drawable?,
+        right: Drawable?,
+        bottom: Drawable?
+    ) {
+        super.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
+        attrTextView.disableCompoundDrawables()
+    }
+
     override fun setBackgroundResource(resid: Int) {
         super.setBackgroundResource(resid)
         attrBackground.setBackgroundResource(resid)
+    }
+
+    override fun setBackgroundTintList(tint: ColorStateList?) {
+        super.setBackgroundTintList(tint)
+        attrBackground.setBackgroundTintList(tint)
+    }
+
+    override fun setForeground(foreground: Drawable?) {
+        super.setForeground(foreground)
+        attrBackground.setForeground(foreground)
+    }
+
+    override fun setForegroundTintList(tint: ColorStateList?) {
+        super.setForegroundTintList(tint)
+        attrBackground.setForegroundTintList(tint)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        if (needObserved()) {
+            MXSkinObserver.addObserver(this)
+        }
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        if (needObserved()) {
+            MXSkinObserver.deleteObserver(this)
+        }
     }
 }

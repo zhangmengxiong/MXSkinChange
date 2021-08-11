@@ -6,8 +6,9 @@ import android.view.View
 import androidx.cardview.widget.CardView
 import com.mx.skinchange.androidx.attrs.AttrCardView
 import com.mx.skinchange.base.ISkinView
+import com.mx.skinchange.utils.MXSkinObserver
 
-open class CommonCardView @JvmOverloads constructor(
+open class MXSkinCardView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : CardView(context, attrs, defStyleAttr), ISkinView {
 
@@ -25,7 +26,21 @@ open class CommonCardView @JvmOverloads constructor(
         return this
     }
 
-    override fun onChange() {
+    override fun onSkinChange() {
         attrBackground.applyAttrs()
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        if (needObserved()) {
+            MXSkinObserver.addObserver(this)
+        }
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        if (needObserved()) {
+            MXSkinObserver.deleteObserver(this)
+        }
     }
 }

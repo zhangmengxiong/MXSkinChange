@@ -1,14 +1,17 @@
 package com.mx.skinchange.common.views
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.attrs.AttrBackground
-import com.mx.skinchange.common.attrs.AttrCheckedTextView
+import com.mx.skinchange.common.attrs.AttrCheckTextView
 import com.mx.skinchange.common.attrs.AttrTextView
+import com.mx.skinchange.utils.MXSkinObserver
 
-class CommonCheckTextView @JvmOverloads constructor(
+open class MXSkinCheckTextView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : androidx.appcompat.widget.AppCompatCheckedTextView(
     context,
@@ -17,13 +20,13 @@ class CommonCheckTextView @JvmOverloads constructor(
 ), ISkinView {
 
     private val attrBackground by lazy { AttrBackground(this) }
-    private val attrCheckedTextView by lazy { AttrCheckedTextView(this) }
+    private val attrCheckTextView by lazy { AttrCheckTextView(this) }
     private val attrTextView by lazy { AttrTextView(this) }
 
     init {
         val defStyleAttr = if (defStyleAttr == 0) android.R.attr.checkboxStyle else defStyleAttr
         attrBackground.initAttrs(attrs, defStyleAttr)
-        attrCheckedTextView.initAttrs(attrs, defStyleAttr)
+        attrCheckTextView.initAttrs(attrs, defStyleAttr)
         attrTextView.initAttrs(attrs, defStyleAttr)
     }
 
@@ -35,15 +38,20 @@ class CommonCheckTextView @JvmOverloads constructor(
         return this
     }
 
-    override fun onChange() {
+    override fun onSkinChange() {
         attrBackground.applyAttrs()
-        attrCheckedTextView.applyAttrs()
+        attrCheckTextView.applyAttrs()
         attrTextView.applyAttrs()
     }
 
     override fun setCheckMarkDrawable(resId: Int) {
         super.setCheckMarkDrawable(resId)
-        attrCheckedTextView.setCheckMarkDrawable(resId)
+        attrCheckTextView.setCheckMarkDrawable(resId)
+    }
+
+    override fun setCheckMarkTintList(tint: ColorStateList?) {
+        super.setCheckMarkTintList(tint)
+        attrCheckTextView.setCheckMarkTintList(tint)
     }
 
     override fun setTextAppearance(resId: Int) {
@@ -75,8 +83,57 @@ class CommonCheckTextView @JvmOverloads constructor(
         attrTextView.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
     }
 
+    override fun setCompoundDrawables(
+        left: Drawable?,
+        top: Drawable?,
+        right: Drawable?,
+        bottom: Drawable?
+    ) {
+        super.setCompoundDrawables(left, top, right, bottom)
+        attrTextView.disableCompoundDrawables()
+    }
+
+    override fun setCompoundDrawablesWithIntrinsicBounds(
+        left: Drawable?,
+        top: Drawable?,
+        right: Drawable?,
+        bottom: Drawable?
+    ) {
+        super.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
+        attrTextView.disableCompoundDrawables()
+    }
+
     override fun setBackgroundResource(resid: Int) {
         super.setBackgroundResource(resid)
         attrBackground.setBackgroundResource(resid)
+    }
+
+    override fun setBackgroundTintList(tint: ColorStateList?) {
+        super.setBackgroundTintList(tint)
+        attrBackground.setBackgroundTintList(tint)
+    }
+
+    override fun setForeground(foreground: Drawable?) {
+        super.setForeground(foreground)
+        attrBackground.setForeground(foreground)
+    }
+
+    override fun setForegroundTintList(tint: ColorStateList?) {
+        super.setForegroundTintList(tint)
+        attrBackground.setForegroundTintList(tint)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        if (needObserved()) {
+            MXSkinObserver.addObserver(this)
+        }
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        if (needObserved()) {
+            MXSkinObserver.deleteObserver(this)
+        }
     }
 }

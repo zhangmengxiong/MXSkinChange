@@ -1,15 +1,19 @@
 package com.mx.skinchange.common.attrs
 
+import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.widget.CompoundButton
 import androidx.core.widget.CompoundButtonCompat
 import com.mx.skinchange.R
-import com.mx.skinchange.factory.SkinResourceLoader
+import com.mx.skinchange.base.BaseAttr
+import com.mx.skinchange.models.AttrItem
+import com.mx.skinchange.models.AttrType
 
-open class AttrButton(val view: CompoundButton) : com.mx.skinchange.base.AttrBase {
-    private var buttonResId = AttrBase.INVALID_ID
-    private var buttonTintResId = AttrBase.INVALID_ID
+open class AttrButton(val view: CompoundButton) : BaseAttr {
+    private val buttonAttr = AttrItem()
+    private val buttonTintAttr = AttrItem()
+
 
     override fun initAttrs(attrs: AttributeSet?, defStyleAttr: Int) {
         val a: TypedArray = view.context.obtainStyledAttributes(
@@ -18,45 +22,31 @@ open class AttrButton(val view: CompoundButton) : com.mx.skinchange.base.AttrBas
             defStyleAttr, 0
         )
         try {
-            buttonResId = getResourceId(a, R.styleable.AttrButton_android_button)
-            buttonTintResId = getResourceId(a, R.styleable.AttrButton_android_buttonTint)
+            buttonAttr.init(a, R.styleable.AttrButton_android_button)
+            buttonTintAttr.init(a, R.styleable.AttrButton_android_buttonTint)
         } finally {
             a.recycle()
+        }
+        buttonAttr.onApplyDrawable { drawable ->
+            view.buttonDrawable = drawable
+        }
+        buttonTintAttr.onApplyColorStateList { colorStateList ->
+            CompoundButtonCompat.setButtonTintList(view, colorStateList)
         }
         applyAttrs()
     }
 
     override fun applyAttrs() {
-        applyButtonRes()
-        applyButtonTintRes()
+        buttonAttr.apply(view.context)
+        buttonTintAttr.apply(view.context)
     }
 
-    private fun applyButtonRes() {
-        val resId = checkResourceId(buttonResId)
-        if (resId == AttrBase.INVALID_ID) {
-            return
-        }
-        val drawable = SkinResourceLoader.loadDrawable(
-            view.context,
-            resId
-        )
-        view.buttonDrawable = drawable
-    }
-
-    private fun applyButtonTintRes() {
-        val resId = checkResourceId(buttonTintResId)
-        if (resId == AttrBase.INVALID_ID) {
-            return
-        }
-        val colorStateList = SkinResourceLoader.loadColorStateList(
-            view.context,
-            resId
-        )
-        CompoundButtonCompat.setButtonTintList(view, colorStateList)
-    }
-
-    fun setButtonDrawable(res: Int) {
-        buttonResId = res
+    fun setButtonDrawable(resId: Int) {
+        buttonAttr.setResourceId(resId)
         applyAttrs()
+    }
+
+    fun setButtonTintList(tint: ColorStateList?) {
+        buttonTintAttr.disable()
     }
 }

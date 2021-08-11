@@ -2,12 +2,14 @@ package com.mx.skinchange.factory
 
 import android.content.Context
 import android.util.AttributeSet
-import com.mx.skinchange.SkinManager
-import com.mx.skinchange.androidx.views.CommonCardView
+import com.mx.skinchange.MXSkinManager
+import com.mx.skinchange.androidx.views.MXSkinCardView
+import com.mx.skinchange.androidx.views.MXSkinConstraintLayout
+import com.mx.skinchange.androidx.views.MXSkinRecyclerView
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.views.*
 
-object SkinViewRegister {
+object MXSkinViewRegister {
     /**
      * 内置换肤插件
      */
@@ -19,26 +21,34 @@ object SkinViewRegister {
     private val skinViewList = HashMap<String, Class<out ISkinView>>()
 
     init {
-        registerDefault(CommonLinearLayout::class.java)
-        registerDefault(CommonRelativeLayout::class.java)
-        registerDefault(CommonFrameLayout::class.java)
-        registerDefault(CommonTextView::class.java)
-        registerDefault(CommonImageView::class.java)
-        registerDefault(CommonView::class.java)
-        registerDefault(CommonButton::class.java)
-        registerDefault(CommonScrollView::class.java)
-        registerDefault(CommonHorizontalScrollView::class.java)
-        registerDefault(CommonEditText::class.java)
-        registerDefault(CommonRadioButton::class.java)
-        registerDefault(CommonRadioGroup::class.java)
-        registerDefault(CommonCheckBox::class.java)
-        registerDefault(CommonCheckTextView::class.java)
-        registerDefault(CommonProgressBar::class.java)
-        registerDefault(CommonRatingBar::class.java)
-        registerDefault(CommonSeekBar::class.java)
+        registerDefault(MXSkinLinearLayout::class.java)
+        registerDefault(MXSkinRelativeLayout::class.java)
+        registerDefault(MXSkinFrameLayout::class.java)
+        registerDefault(MXSkinTextView::class.java)
+        registerDefault(MXSkinImageView::class.java)
+        registerDefault(MXSkinView::class.java)
+        registerDefault(MXSkinButton::class.java)
+        registerDefault(MXSkinScrollView::class.java)
+        registerDefault(MXSkinHorizontalScrollView::class.java)
+        registerDefault(MXSkinEditText::class.java)
+        registerDefault(MXSkinRadioButton::class.java)
+        registerDefault(MXSkinRadioGroup::class.java)
+        registerDefault(MXSkinCheckBox::class.java)
+        registerDefault(MXSkinCheckTextView::class.java)
+        registerDefault(MXSkinProgressBar::class.java)
+        registerDefault(MXSkinRatingBar::class.java)
+        registerDefault(MXSkinSeekBar::class.java)
 
         try {
-            registerDefault(CommonCardView::class.java)
+            registerDefault(MXSkinCardView::class.java)
+        } catch (e: java.lang.Exception) {
+        }
+        try {
+            registerDefault(MXSkinConstraintLayout::class.java)
+        } catch (e: java.lang.Exception) {
+        }
+        try {
+            registerDefault(MXSkinRecyclerView::class.java)
         } catch (e: java.lang.Exception) {
         }
     }
@@ -62,7 +72,7 @@ object SkinViewRegister {
     }
 
     private fun getNameByClass(iSkinView: Class<out ISkinView>): String? {
-        return createSkinView(iSkinView, SkinManager.appContext, null)?.getName()
+        return createSkinView(iSkinView, MXSkinManager.appContext, null)?.getName()
     }
 
     fun createSkinView(

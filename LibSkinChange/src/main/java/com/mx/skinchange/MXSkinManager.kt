@@ -6,10 +6,11 @@ import android.content.SharedPreferences
 import android.view.LayoutInflater
 import androidx.core.view.LayoutInflaterCompat
 import androidx.lifecycle.Lifecycle
-import com.mx.skinchange.factory.SkinFactory
-import com.mx.skinchange.utils.SkinObserver
+import com.mx.skinchange.factory.MXSkinFactory
+import com.mx.skinchange.utils.MXSkinObserver
+import com.mx.skinchange.utils.MXSkinUtils
 
-object SkinManager {
+object MXSkinManager {
     private const val SKIN_NAME_SAVED = "MX_SKIN_CHANGE_NAME"
     private var application: Application? = null
     private val sp: SharedPreferences by lazy {
@@ -29,7 +30,7 @@ object SkinManager {
     }
 
     fun attach(lifecycle: Lifecycle, layoutInflater: LayoutInflater) {
-        val factory = SkinFactory()
+        val factory = MXSkinFactory()
         lifecycle.addObserver(factory)
         LayoutInflaterCompat.setFactory2(layoutInflater, factory)
     }
@@ -37,11 +38,13 @@ object SkinManager {
     /**
      * 加载皮肤
      */
-    fun loadSkin(skinName: String?) {
-        if (skinName == this.skinName) return
+    fun loadSkin(skinName: String?): Boolean {
+        MXSkinUtils.log("加载皮肤：$skinName")
+        if (skinName == this.skinName) return false
         this.skinName = skinName
         sp.edit().putString(SKIN_NAME_SAVED, skinName ?: "").commit()
-        SkinObserver.notifyChange()
+        MXSkinObserver.notifyChange()
+        return true
     }
 
     /**

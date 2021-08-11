@@ -1,5 +1,6 @@
 package com.mx.skinchange.common.attrs
 
+import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.graphics.BitmapShader
 import android.graphics.Shader
@@ -11,12 +12,16 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.ProgressBar
 import com.mx.skinchange.R
-import com.mx.skinchange.factory.SkinResourceLoader
+import com.mx.skinchange.base.BaseAttr
+import com.mx.skinchange.models.AttrItem
+import com.mx.skinchange.models.AttrType
 
-open class AttrProgressBar(val view: ProgressBar) : com.mx.skinchange.base.AttrBase {
-    private var mIndeterminateDrawableResId = AttrBase.INVALID_ID
-    private var mProgressDrawableResId = AttrBase.INVALID_ID
-    private var mIndeterminateTintResId = AttrBase.INVALID_ID
+open class AttrProgressBar(val view: ProgressBar) : BaseAttr {
+    private val indeterminateDrawableAttr = AttrItem()
+    private val indeterminateTintAttr = AttrItem()
+    private val progressDrawableAttr = AttrItem()
+    private val progressTintAttr = AttrItem()
+
 
     override fun initAttrs(attrs: AttributeSet?, defStyleAttr: Int) {
         val a: TypedArray = view.context.obtainStyledAttributes(
@@ -25,65 +30,49 @@ open class AttrProgressBar(val view: ProgressBar) : com.mx.skinchange.base.AttrB
             defStyleAttr, 0
         )
         try {
-            mIndeterminateDrawableResId =
-                getResourceId(a, R.styleable.AttrProgressBar_android_indeterminateDrawable)
-            mProgressDrawableResId =
-                getResourceId(a, R.styleable.AttrProgressBar_android_progressDrawable)
-            mIndeterminateTintResId =
-                getResourceId(a, R.styleable.AttrProgressBar_android_indeterminateTint)
+            indeterminateDrawableAttr.init(
+                a,
+                R.styleable.AttrProgressBar_android_indeterminateDrawable
+            )
+            indeterminateTintAttr.init(a, R.styleable.AttrProgressBar_android_indeterminateTint)
+
+            progressDrawableAttr.init(
+                a,
+                R.styleable.AttrProgressBar_android_progressDrawable
+            )
+            progressTintAttr.init(a, R.styleable.AttrProgressBar_android_progressTint)
         } finally {
             a.recycle()
         }
+        indeterminateDrawableAttr.onApplyDrawable { drawable ->
+            view.indeterminateDrawable?.bounds?.let {
+                drawable.bounds = it
+            }
+            view.indeterminateDrawable = tileifyIndeterminate(drawable)
+        }
+        indeterminateTintAttr.onApplyColorStateList { colorStateList ->
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                view.indeterminateTintList = colorStateList
+            }
+        }
 
+        progressDrawableAttr.onApplyDrawable { drawable ->
+            view.progressDrawable = tileify(drawable, false)
+        }
+        progressTintAttr.onApplyColorStateList { colorStateList ->
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                view.progressTintList = colorStateList
+            }
+        }
 
-        applyIndeterminateDrawableRes()
-        applyProgressDrawableRes()
-        applyIndeterminateTintRes()
+        applyAttrs()
     }
 
     override fun applyAttrs() {
-    }
-
-    private fun applyIndeterminateDrawableRes() {
-        val resId = checkResourceId(mIndeterminateDrawableResId)
-        if (resId == AttrBase.INVALID_ID) {
-            return
-        }
-        val drawable = SkinResourceLoader.loadDrawable(
-            view.context,
-            resId
-        ) ?: return
-        view.indeterminateDrawable?.bounds?.let {
-            drawable.bounds = it
-        }
-        view.indeterminateDrawable = tileifyIndeterminate(drawable)
-    }
-
-    private fun applyIndeterminateTintRes() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val resId = checkResourceId(mIndeterminateTintResId)
-            if (resId == AttrBase.INVALID_ID) {
-                return
-            }
-            val colorStateList = SkinResourceLoader.loadColorStateList(
-                view.context,
-                resId
-            ) ?: return
-
-            view.indeterminateTintList = colorStateList
-        }
-    }
-
-    private fun applyProgressDrawableRes() {
-        val resId = checkResourceId(mProgressDrawableResId)
-        if (resId == AttrBase.INVALID_ID) {
-            return
-        }
-        val drawable = SkinResourceLoader.loadDrawable(
-            view.context,
-            resId
-        ) ?: return
-        view.progressDrawable = tileify(drawable, false)
+        indeterminateDrawableAttr.apply(view.context)
+        indeterminateTintAttr.apply(view.context)
+        progressDrawableAttr.apply(view.context)
+        progressTintAttr.apply(view.context)
     }
 
     /**
@@ -147,5 +136,21 @@ open class AttrProgressBar(val view: ProgressBar) : com.mx.skinchange.base.AttrB
     private fun getDrawableShape(): Shape {
         val roundedCorners = floatArrayOf(5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f)
         return RoundRectShape(roundedCorners, null, null)
+    }
+
+    fun setIndeterminateDrawable(drawable: Drawable?) {
+        indeterminateDrawableAttr.disable()
+    }
+
+    fun setIndeterminateTintList(tint: ColorStateList?) {
+        indeterminateTintAttr.disable()
+    }
+
+    fun setProgressDrawable(drawable: Drawable?) {
+        progressDrawableAttr.disable()
+    }
+
+    fun setProgressTintList(tint: ColorStateList?) {
+        progressTintAttr.disable()
     }
 }

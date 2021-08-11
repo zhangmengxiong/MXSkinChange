@@ -8,9 +8,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.mx.skinchange.base.ISkinChange
-import com.mx.skinchange.utils.SkinObserver
+import com.mx.skinchange.utils.MXSkinObserver
 
-class SkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
+class MXSkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
     private val skinViewList = ArrayList<ISkinChange>()
     override fun onCreateView(
         parent: View?,
@@ -18,8 +18,8 @@ class SkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
         context: Context,
         attrs: AttributeSet
     ): View? {
-        val clazz = SkinViewRegister.getRegisterClass(name) ?: return null
-        val iSkinView = SkinViewRegister.createSkinView(clazz, context, attrs)
+        val clazz = MXSkinViewRegister.getRegisterClass(name) ?: return null
+        val iSkinView = MXSkinViewRegister.createSkinView(clazz, context, attrs)
         if (iSkinView != null) {
             skinViewList.add(iSkinView)
         }
@@ -27,8 +27,8 @@ class SkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
     }
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        val clazz = SkinViewRegister.getRegisterClass(name) ?: return null
-        val iSkinView = SkinViewRegister.createSkinView(clazz, context, attrs)
+        val clazz = MXSkinViewRegister.getRegisterClass(name) ?: return null
+        val iSkinView = MXSkinViewRegister.createSkinView(clazz, context, attrs)
         if (iSkinView != null) {
             skinViewList.add(iSkinView)
         }
@@ -37,18 +37,18 @@ class SkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
 
     @OnLifecycleEvent(value = Lifecycle.Event.ON_CREATE)
     fun onCreateActivity() {
-        SkinObserver.addObserver(this)
+        MXSkinObserver.addObserver(this)
     }
 
     @OnLifecycleEvent(value = Lifecycle.Event.ON_DESTROY)
     fun onDestroyActivity() {
         skinViewList.clear()
-        SkinObserver.deleteObserver(this)
+        MXSkinObserver.deleteObserver(this)
     }
 
-    override fun onChange() {
+    override fun onSkinChange() {
         skinViewList.toList().forEach {
-            it.onChange()
+            it.onSkinChange()
         }
     }
 }

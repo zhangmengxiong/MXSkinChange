@@ -8,4 +8,5 @@ import android.view.View
 interface ISkinView : ISkinChange {
     fun getName(): String // 获取View的名字
     fun getSelfView(): View
+    fun needObserved(): Boolean = false // 当前View是否需要被加入监听列表
 }

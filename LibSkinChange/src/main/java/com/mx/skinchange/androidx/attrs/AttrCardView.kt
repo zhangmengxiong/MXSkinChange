@@ -4,11 +4,13 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.cardview.widget.CardView
 import com.mx.skinchange.R
-import com.mx.skinchange.common.attrs.AttrBase
-import com.mx.skinchange.factory.SkinResourceLoader
+import com.mx.skinchange.base.BaseAttr
+import com.mx.skinchange.resource.MXSkinResource
+import com.mx.skinchange.base.BaseAttr.Companion.checkResourceId
+import com.mx.skinchange.base.BaseAttr.Companion.getResourceId
 
-open class AttrCardView(val view: CardView) : com.mx.skinchange.base.AttrBase {
-    private var backgroundResId = AttrBase.INVALID_ID
+open class AttrCardView(val view: CardView) : BaseAttr {
+    private var backgroundResId = BaseAttr.INVALID_ID
 
     override fun initAttrs(attrs: AttributeSet?, defStyleAttr: Int) {
         val a: TypedArray = view.context.obtainStyledAttributes(
@@ -27,10 +29,10 @@ open class AttrCardView(val view: CardView) : com.mx.skinchange.base.AttrBase {
 
     override fun applyAttrs() {
         val resId = checkResourceId(backgroundResId)
-        if (resId == AttrBase.INVALID_ID) {
+        if (resId == BaseAttr.INVALID_ID) {
             return
         }
-        val colorStateList = SkinResourceLoader.loadColorStateList(
+        val colorStateList = MXSkinResource.getColorStateList(
             view.context,
             resId
         ) ?: return
