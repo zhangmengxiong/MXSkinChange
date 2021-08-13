@@ -10,7 +10,6 @@ import androidx.core.view.ViewCompat
 import com.mx.skinchange.R
 import com.mx.skinchange.base.BaseAttr
 import com.mx.skinchange.models.AttrItem
-import com.mx.skinchange.models.AttrType
 
 open class AttrBackground(val view: View) : BaseAttr {
     private val backgroundAttr = AttrItem()

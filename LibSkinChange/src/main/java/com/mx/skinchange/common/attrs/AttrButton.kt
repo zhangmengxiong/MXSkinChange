@@ -8,7 +8,6 @@ import androidx.core.widget.CompoundButtonCompat
 import com.mx.skinchange.R
 import com.mx.skinchange.base.BaseAttr
 import com.mx.skinchange.models.AttrItem
-import com.mx.skinchange.models.AttrType
 
 open class AttrButton(val view: CompoundButton) : BaseAttr {
     private val buttonAttr = AttrItem()

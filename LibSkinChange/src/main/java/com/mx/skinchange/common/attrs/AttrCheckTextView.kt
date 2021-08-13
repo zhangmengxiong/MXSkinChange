@@ -8,7 +8,6 @@ import android.widget.CheckedTextView
 import com.mx.skinchange.R
 import com.mx.skinchange.base.BaseAttr
 import com.mx.skinchange.models.AttrItem
-import com.mx.skinchange.models.AttrType
 
 open class AttrCheckTextView(val view: CheckedTextView) : BaseAttr {
     private val checkAttr = AttrItem()

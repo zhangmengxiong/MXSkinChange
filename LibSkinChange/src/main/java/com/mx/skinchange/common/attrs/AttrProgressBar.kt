@@ -14,7 +14,6 @@ import android.widget.ProgressBar
 import com.mx.skinchange.R
 import com.mx.skinchange.base.BaseAttr
 import com.mx.skinchange.models.AttrItem
-import com.mx.skinchange.models.AttrType
 
 open class AttrProgressBar(val view: ProgressBar) : BaseAttr {
     private val indeterminateDrawableAttr = AttrItem()

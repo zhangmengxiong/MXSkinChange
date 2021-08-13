@@ -8,7 +8,6 @@ import androidx.core.widget.ImageViewCompat
 import com.mx.skinchange.R
 import com.mx.skinchange.base.BaseAttr
 import com.mx.skinchange.models.AttrItem
-import com.mx.skinchange.models.AttrType
 
 open class AttrImageView(val view: ImageView) : BaseAttr {
     private val srcAttr = AttrItem()
