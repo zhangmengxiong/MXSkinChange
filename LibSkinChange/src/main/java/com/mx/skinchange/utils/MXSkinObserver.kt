@@ -1,6 +1,8 @@
 package com.mx.skinchange.utils
 
+import androidx.lifecycle.Lifecycle
 import com.mx.skinchange.base.ISkinChange
+import com.mx.skinchange.models.MXSkinLifecycleObserver
 
 object MXSkinObserver {
     private val observerList = ArrayList<ISkinChange>()
@@ -19,5 +21,9 @@ object MXSkinObserver {
     fun notifyChange() {
         observerList.toList().forEach { it.onSkinChange() }
         MXSkinUtils.log("observer size = ${observerList.size}")
+    }
+
+    fun observerByLifecycle(lifecycle: Lifecycle, onChange: (() -> Unit)) {
+        lifecycle.addObserver(MXSkinLifecycleObserver(onChange))
     }
 }

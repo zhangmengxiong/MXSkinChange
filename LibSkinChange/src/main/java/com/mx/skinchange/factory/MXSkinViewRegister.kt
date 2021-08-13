@@ -38,6 +38,7 @@ object MXSkinViewRegister {
         registerDefault(MXSkinProgressBar::class.java)
         registerDefault(MXSkinRatingBar::class.java)
         registerDefault(MXSkinSeekBar::class.java)
+        registerDefault(MXSkinViewGroup::class.java)
 
         try {
             registerDefault(MXSkinCardView::class.java)
