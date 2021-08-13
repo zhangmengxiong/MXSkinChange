@@ -1,6 +1,9 @@
 # MXSkinChange 动态换肤插件
 [![](https://jitpack.io/v/com.gitee.zhangmengxiong/MXSkinChange.svg)](https://jitpack.io/#com.gitee.zhangmengxiong/MXSkinChange)
 
+```gradle
+    implementation 'com.gitee.zhangmengxiong:MXSkinChange:1.0.6'
+```
 插件深度绑定 `AppCompatActivity` `Lifecycle`，Activity打开和结束自动释放对View的引用
 项目原理：
 使用 `LayoutInflaterCompat.setFactory2(layoutInflater, factory)` 方法，对Activity创建View的过程进行注入，对系统View/ViewGroup替换为自定义View/ViewGroup，自定义View会对相关的资源引用进行资源名替换引用
