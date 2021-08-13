@@ -88,6 +88,12 @@ object MXSkinViewRegister {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+        try {
+            val constructor = clazz.getConstructor(Context::class.java, AttributeSet::class.java)
+            return constructor.newInstance(context, attributeSet)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         return null
     }
 

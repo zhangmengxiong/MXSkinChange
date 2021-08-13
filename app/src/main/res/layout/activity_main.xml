@@ -37,6 +37,12 @@
                 android:text="黑色" />
         </RadioGroup>
 
+        <com.mx.skinchange_demo.customer.CView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="测试View"
+            app:color="@color/black" />
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
