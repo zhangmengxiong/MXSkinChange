@@ -1,5 +1,4 @@
-# MXSkinChange
-换肤插件
+# MXSkinChange 动态换肤插件
 [![](https://jitpack.io/v/com.gitee.zhangmengxiong/MXSkinChange.svg)](https://jitpack.io/#com.gitee.zhangmengxiong/MXSkinChange)
 
 插件深度绑定 `AppCompatActivity` `Lifecycle`，Activity打开和结束自动释放对View的引用
