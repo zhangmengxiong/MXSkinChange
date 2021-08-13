@@ -45,8 +45,4 @@ class CView @JvmOverloads constructor(
             setTextColor(color)
         }
     }
-
-    override fun needObserved(): Boolean {
-        return true
-    }
 }
