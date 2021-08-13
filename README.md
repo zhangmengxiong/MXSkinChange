@@ -51,7 +51,7 @@ MXSkinManager.resetSkin()
 ------------
 
 
-#### 如何适配自定义View
+### 如何适配自定义View
 - 如何自定义一个LinearLayout
   自定义View可以继承MXSkinLinearLayout类，
 ``` kotlin
