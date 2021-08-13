@@ -7,11 +7,11 @@
 
 ## 用法
 #### 1：Application 中需要初始化一次
-``` 
+``` kotlin
 MXSkinManager.init(this)
 ```
 #### 2：在Activity中绑定Factory
-```
+``` kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
     MXSkinManager.attach(lifecycle, layoutInflater)
     super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 - 在主工程 src/main 新建资源目录 res-dark
 - build.gradle中创建引用新资源目录
-```
+``` xml
 android {
     sourceSets {
         main {
@@ -40,7 +40,7 @@ android {
 
 - 加载新皮肤
 
-```
+``` kotlin
 // 加载新皮肤 ：dark
 MXSkinManager.loadSkin("dark")
 
@@ -54,7 +54,7 @@ MXSkinManager.resetSkin()
 #### 如何适配自定义View
 - 如何自定义一个LinearLayout
   自定义View可以继承MXSkinLinearLayout类，
-```
+``` kotlin
 class ColorLinearLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : MXSkinLinearLayout(context, attrs) {
