@@ -9,9 +9,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        // 注册自定义View，这一步必须要有，否则皮肤信息不会生效
-        MXSkinViewRegister.register(CView::class.java)
-
         MXSkinManager.attach(lifecycle, layoutInflater)
 
         super.onCreate(savedInstanceState)
