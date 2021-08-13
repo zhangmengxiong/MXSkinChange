@@ -36,6 +36,7 @@ android {
 - 新资源目录中定义相关资源，新皮肤的所有资源需要加上后缀**“_dark”**
   示例：
   R.drawable.bg_launch_btn  -> R.drawable.bg_launch_btn_dark
+  
   R.color.color_red_text  -> R.color.color_red_text_dark
 
 - 加载新皮肤
