@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.widget.CheckedTextView
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.attrs.AttrBackground
 import com.mx.skinchange.common.attrs.AttrCheckTextView
@@ -30,7 +31,7 @@ open class MXSkinCheckTextView @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "CheckedTextView"
+        return CheckedTextView::class.java.simpleName
     }
 
     override fun getSelfView(): View {

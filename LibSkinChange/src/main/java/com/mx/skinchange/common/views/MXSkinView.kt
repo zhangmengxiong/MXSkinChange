@@ -21,7 +21,7 @@ open class MXSkinView @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "View"
+        return View::class.java.simpleName
     }
 
     override fun getSelfView(): View {

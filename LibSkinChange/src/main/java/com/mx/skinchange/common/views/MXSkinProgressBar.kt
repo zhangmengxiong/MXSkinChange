@@ -29,7 +29,7 @@ open class MXSkinProgressBar @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "ProgressBar"
+        return ProgressBar::class.java.simpleName
     }
 
     override fun getSelfView(): View {

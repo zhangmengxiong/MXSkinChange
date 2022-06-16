@@ -22,7 +22,7 @@ open class MXSkinViewGroup @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "ViewGroup"
+        return ViewGroup::class.java.simpleName
     }
 
     override fun getSelfView(): View {

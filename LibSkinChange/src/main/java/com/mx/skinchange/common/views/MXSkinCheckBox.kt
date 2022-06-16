@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.widget.CheckBox
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.attrs.AttrBackground
 import com.mx.skinchange.common.attrs.AttrButton
@@ -31,7 +32,7 @@ open class MXSkinCheckBox @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "CheckBox"
+        return CheckBox::class.java.simpleName
     }
 
     override fun getSelfView(): View {

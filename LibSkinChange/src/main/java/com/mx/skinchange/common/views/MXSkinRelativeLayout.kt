@@ -22,7 +22,7 @@ open class MXSkinRelativeLayout @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "RelativeLayout"
+        return RelativeLayout::class.java.simpleName
     }
 
     override fun getSelfView(): View {

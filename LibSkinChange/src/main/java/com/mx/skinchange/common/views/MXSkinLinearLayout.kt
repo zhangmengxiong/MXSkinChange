@@ -22,7 +22,7 @@ open class MXSkinLinearLayout @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "LinearLayout"
+        return LinearLayout::class.java.simpleName
     }
 
     override fun getSelfView(): View {

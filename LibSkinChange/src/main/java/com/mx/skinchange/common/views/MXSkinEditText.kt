@@ -26,7 +26,7 @@ open class MXSkinEditText @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "EditText"
+        return EditText::class.java.simpleName
     }
 
     override fun getSelfView(): View {

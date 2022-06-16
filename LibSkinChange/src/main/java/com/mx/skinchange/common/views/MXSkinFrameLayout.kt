@@ -22,7 +22,7 @@ open class MXSkinFrameLayout @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "FrameLayout"
+        return FrameLayout::class.java.simpleName
     }
 
     override fun getSelfView(): View {

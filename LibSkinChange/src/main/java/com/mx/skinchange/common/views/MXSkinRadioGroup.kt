@@ -23,7 +23,7 @@ open class MXSkinRadioGroup @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "RadioGroup"
+        return RadioGroup::class.java.simpleName
     }
 
     override fun getSelfView(): View {

@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.widget.RatingBar
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.attrs.AttrBackground
 import com.mx.skinchange.common.attrs.AttrProgressBar
@@ -26,7 +27,7 @@ open class MXSkinRatingBar @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "RatingBar"
+        return RatingBar::class.java.simpleName
     }
 
     override fun getSelfView(): View {

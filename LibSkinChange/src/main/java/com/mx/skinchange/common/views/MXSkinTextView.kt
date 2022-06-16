@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.widget.TextView
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.attrs.AttrBackground
 import com.mx.skinchange.common.attrs.AttrTextView
@@ -25,7 +26,7 @@ open class MXSkinTextView @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "TextView"
+        return TextView::class.java.simpleName
     }
 
     override fun getSelfView(): View {

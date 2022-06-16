@@ -10,7 +10,7 @@ import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinCardView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = androidx.cardview.R.attr.cardViewStyle
 ) : CardView(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrCardView? = null
@@ -21,7 +21,7 @@ open class MXSkinCardView @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "androidx.cardview.widget.CardView"
+        return CardView::class.java.name
     }
 
     override fun getSelfView(): View {

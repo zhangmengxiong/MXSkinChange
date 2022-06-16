@@ -24,7 +24,7 @@ open class MXSkinScrollView @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "ScrollView"
+        return ScrollView::class.java.simpleName
     }
 
     override fun getSelfView(): View {

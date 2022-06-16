@@ -24,7 +24,7 @@ open class MXSkinHorizontalScrollView @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "HorizontalScrollView"
+        return HorizontalScrollView::class.java.simpleName
     }
 
     override fun getSelfView(): View {

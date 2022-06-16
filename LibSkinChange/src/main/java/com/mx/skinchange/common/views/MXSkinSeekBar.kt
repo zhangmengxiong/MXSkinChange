@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.widget.SeekBar
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.attrs.AttrBackground
 import com.mx.skinchange.common.attrs.AttrSeekBarProgressBar
@@ -26,7 +27,7 @@ open class MXSkinSeekBar @JvmOverloads constructor(
     }
 
     override fun getName(): String {
-        return "SeekBar"
+        return SeekBar::class.java.simpleName
     }
 
     override fun getSelfView(): View {
