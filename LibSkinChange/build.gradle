@@ -32,8 +32,8 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId = 'com.mx.keyvalue'
-                artifactId = 'MXKeyValue'
+                groupId = 'com.mx.skinchange'
+                artifactId = 'MXSkinChange'
                 version = '1.0.0'
             }
         }
