@@ -13,7 +13,7 @@ import com.mx.skinchange.common.attrs.AttrTextView
 import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinCheckTextView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.textViewStyle
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.checkedTextViewStyle
 ) : androidx.appcompat.widget.AppCompatCheckedTextView(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
