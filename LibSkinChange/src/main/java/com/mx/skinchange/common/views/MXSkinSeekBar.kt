@@ -11,18 +11,13 @@ import com.mx.skinchange.common.attrs.AttrSeekBarProgressBar
 import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinSeekBar @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : androidx.appcompat.widget.AppCompatSeekBar(
-    context,
-    attrs,
-    if (defStyleAttr == 0) android.R.attr.seekBarStyle else defStyleAttr
-), ISkinView {
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.seekBarStyle
+) : androidx.appcompat.widget.AppCompatSeekBar(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
     private var attrProgressBar: AttrSeekBarProgressBar? = null
 
     init {
-        val defStyleAttr = if (defStyleAttr == 0) android.R.attr.seekBarStyle else defStyleAttr
         attrBackground = AttrBackground(this)
         attrProgressBar = AttrSeekBarProgressBar(this)
 

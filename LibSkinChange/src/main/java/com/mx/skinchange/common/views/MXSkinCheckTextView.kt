@@ -12,19 +12,14 @@ import com.mx.skinchange.common.attrs.AttrTextView
 import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinCheckTextView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : androidx.appcompat.widget.AppCompatCheckedTextView(
-    context,
-    attrs,
-    if (defStyleAttr == 0) android.R.attr.checkboxStyle else defStyleAttr
-), ISkinView {
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.textViewStyle
+) : androidx.appcompat.widget.AppCompatCheckedTextView(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
     private var attrCheckTextView: AttrCheckTextView? = null
     private var attrTextView: AttrTextView? = null
 
     init {
-        val defStyleAttr = if (defStyleAttr == 0) android.R.attr.checkboxStyle else defStyleAttr
         attrBackground = AttrBackground(this)
         attrCheckTextView = AttrCheckTextView(this)
         attrTextView = AttrTextView(this)
@@ -59,10 +54,11 @@ open class MXSkinCheckTextView @JvmOverloads constructor(
     }
 
     override fun setTextAppearance(resId: Int) {
-        this.setTextAppearance(context, resId)
+        super.setTextAppearance(resId)
+        attrTextView?.setTextAppearance(resId)
     }
 
-    override fun setTextAppearance(context: Context?, resId: Int) {
+    override fun setTextAppearance(context: Context, resId: Int) {
         super.setTextAppearance(context, resId)
         attrTextView?.setTextAppearance(resId)
     }

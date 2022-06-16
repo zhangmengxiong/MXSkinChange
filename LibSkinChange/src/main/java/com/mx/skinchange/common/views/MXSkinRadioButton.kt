@@ -18,18 +18,15 @@ import com.mx.skinchange.utils.MXSkinObserver
  * 2：文字颜色、文字Hint颜色、四边Drawable变化
  */
 open class MXSkinRadioButton @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : androidx.appcompat.widget.AppCompatRadioButton(
-    context,
-    attrs,
-    if (defStyleAttr == 0) android.R.attr.radioButtonStyle else defStyleAttr
-), ISkinView {
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = android.R.attr.radioButtonStyle
+) : androidx.appcompat.widget.AppCompatRadioButton(context, attrs, defStyleAttr), ISkinView {
     private var attrBackground: AttrBackground? = null
     private var attrTextView: AttrTextView? = null
     private var attrButton: AttrButton? = null
 
     init {
-        val defStyleAttr = if (defStyleAttr == 0) android.R.attr.radioButtonStyle else defStyleAttr
         attrBackground = AttrBackground(this)
         attrBackground?.initAttrs(attrs, defStyleAttr)
 
@@ -65,10 +62,11 @@ open class MXSkinRadioButton @JvmOverloads constructor(
     }
 
     override fun setTextAppearance(resId: Int) {
-        setTextAppearance(context, resId)
+        super.setTextAppearance(resId)
+        attrTextView?.setTextAppearance(resId)
     }
 
-    override fun setTextAppearance(context: Context?, resId: Int) {
+    override fun setTextAppearance(context: Context, resId: Int) {
         super.setTextAppearance(context, resId)
         attrTextView?.setTextAppearance(resId)
     }

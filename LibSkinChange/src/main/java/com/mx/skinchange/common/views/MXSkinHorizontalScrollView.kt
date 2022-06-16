@@ -11,7 +11,9 @@ import com.mx.skinchange.common.attrs.AttrBackground
 import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinHorizontalScrollView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = android.R.attr.horizontalScrollViewStyle
 ) : HorizontalScrollView(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null

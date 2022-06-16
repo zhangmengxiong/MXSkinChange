@@ -11,18 +11,13 @@ import com.mx.skinchange.common.attrs.AttrProgressBar
 import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinRatingBar @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : androidx.appcompat.widget.AppCompatRatingBar(
-    context,
-    attrs,
-    if (defStyleAttr == 0) android.R.attr.ratingBarStyle else defStyleAttr
-), ISkinView {
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.ratingBarStyle
+) : androidx.appcompat.widget.AppCompatRatingBar(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
     private var attrProgressBar: AttrProgressBar? = null
 
     init {
-        val defStyleAttr = if (defStyleAttr == 0) android.R.attr.ratingBarStyle else defStyleAttr
         attrBackground = AttrBackground(this)
         attrProgressBar = AttrProgressBar(this)
 

@@ -12,21 +12,18 @@ import com.mx.skinchange.common.attrs.AttrProgressBar
 import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinProgressBar @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : ProgressBar(
-    context,
-    attrs,
-    if (defStyleAttr == 0) android.R.attr.progressBarStyle else defStyleAttr
-), ISkinView {
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = android.R.attr.progressBarStyle
+) : ProgressBar(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
     private var attrProgressBar: AttrProgressBar? = null
 
     init {
-        val defStyleAttr = if (defStyleAttr == 0) android.R.attr.progressBarStyle else defStyleAttr
         attrBackground = AttrBackground(this)
         attrProgressBar = AttrProgressBar(this)
-        
+
         attrBackground?.initAttrs(attrs, defStyleAttr)
         attrProgressBar?.initAttrs(attrs, defStyleAttr)
     }

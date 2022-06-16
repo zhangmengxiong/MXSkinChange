@@ -5,26 +5,22 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.widget.EditText
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.attrs.AttrBackground
 import com.mx.skinchange.common.attrs.AttrTextView
 import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinEditText @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : androidx.appcompat.widget.AppCompatEditText(
-    context,
-    attrs,
-    if (defStyleAttr == 0) android.R.attr.editTextStyle else defStyleAttr
-), ISkinView {
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.editTextStyle
+) : EditText(context, attrs, defStyleAttr), ISkinView {
     private var attrBackground: AttrBackground? = null
     private var attrTextView: AttrTextView? = null
 
     init {
-        val defStyleAttr = if (defStyleAttr == 0) android.R.attr.editTextStyle else defStyleAttr
         attrBackground = AttrBackground(this)
         attrBackground?.initAttrs(attrs, defStyleAttr)
-        
+
         attrTextView = AttrTextView(this)
         attrTextView?.initAttrs(attrs, defStyleAttr)
     }
@@ -43,10 +39,11 @@ open class MXSkinEditText @JvmOverloads constructor(
     }
 
     override fun setTextAppearance(resId: Int) {
-        this.setTextAppearance(context, resId)
+        super.setTextAppearance(resId)
+        attrTextView?.setTextAppearance(resId)
     }
 
-    override fun setTextAppearance(context: Context?, resId: Int) {
+    override fun setTextAppearance(context: Context, resId: Int) {
         super.setTextAppearance(context, resId)
         attrTextView?.setTextAppearance(resId)
     }

@@ -4,13 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.*
 import com.mx.skinchange.base.ISkinChange
 import com.mx.skinchange.utils.MXSkinObserver
 
-class MXSkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
+class MXSkinFactory : LifecycleEventObserver, LayoutInflater.Factory2, ISkinChange {
     private val skinViewList = ArrayList<ISkinChange>()
     override fun onCreateView(
         parent: View?,
@@ -35,20 +33,22 @@ class MXSkinFactory : LifecycleObserver, LayoutInflater.Factory2, ISkinChange {
         return iSkinView?.getSelfView()
     }
 
-    @OnLifecycleEvent(value = Lifecycle.Event.ON_CREATE)
-    fun onCreateActivity() {
-        MXSkinObserver.addObserver(this)
-    }
-
-    @OnLifecycleEvent(value = Lifecycle.Event.ON_DESTROY)
-    fun onDestroyActivity() {
-        skinViewList.clear()
-        MXSkinObserver.deleteObserver(this)
-    }
-
     override fun onSkinChange() {
         skinViewList.toList().forEach {
             it.onSkinChange()
+        }
+    }
+
+    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+        when (event) {
+            Lifecycle.Event.ON_CREATE -> {
+                MXSkinObserver.addObserver(this)
+            }
+            Lifecycle.Event.ON_DESTROY -> {
+                skinViewList.clear()
+                MXSkinObserver.deleteObserver(this)
+            }
+            else -> {}
         }
     }
 }

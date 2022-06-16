@@ -12,32 +12,32 @@ object MXSkinResource {
 
     @JvmStatic
     fun getDrawable(context: Context, @DrawableRes resId: Int): Drawable {
-        return resourceLoader.loadDrawable(context, resId)!!
+        return resourceLoader.getDrawable(context, resId)!!
     }
 
     @JvmStatic
     fun getColor(context: Context, @ColorRes resId: Int): Int {
-        return resourceLoader.loadColor(context, resId)!!
+        return resourceLoader.getColor(context, resId)!!
     }
 
     @JvmStatic
     fun getColorStateList(context: Context, @ColorRes resId: Int): ColorStateList {
-        return resourceLoader.loadColorStateList(context, resId)!!
+        return resourceLoader.getColorStateList(context, resId)!!
     }
 
 
     @JvmStatic
     fun getDrawableSafe(context: Context, @DrawableRes resId: Int): Drawable? {
-        return resourceLoader.loadDrawable(context, resId)
+        return resourceLoader.getDrawable(context, resId)
     }
 
     @JvmStatic
     fun getColorSafe(context: Context, @ColorRes resId: Int): Int? {
-        return resourceLoader.loadColor(context, resId)
+        return resourceLoader.getColor(context, resId)
     }
 
     @JvmStatic
     fun getColorStateListSafe(context: Context, @ColorRes resId: Int): ColorStateList? {
-        return resourceLoader.loadColorStateList(context, resId)
+        return resourceLoader.getColorStateList(context, resId)
     }
 }

@@ -150,3 +150,9 @@ MXSkinViewRegister.register(CView::class.java)
 ```
 
 - 调用`MXSkinManager.loadSkin("dark")`换肤完成
+
+#### 代码中获取和皮肤相关联的Drawable/Color/ColorStatusList
+
+```
+MXSkinResource.getColor(context, R.color.green_a99)
+```

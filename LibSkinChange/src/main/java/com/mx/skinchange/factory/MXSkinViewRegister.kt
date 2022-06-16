@@ -82,15 +82,15 @@ object MXSkinViewRegister {
         attributeSet: AttributeSet?
     ): ISkinView? {
         try {
-            val constructor =
-                clazz.getConstructor(Context::class.java, AttributeSet::class.java, Int::class.java)
-            return constructor.newInstance(context, attributeSet, 0)
+            val constructor = clazz.getConstructor(Context::class.java, AttributeSet::class.java)
+            return constructor.newInstance(context, attributeSet)
         } catch (e: Exception) {
             e.printStackTrace()
         }
         try {
-            val constructor = clazz.getConstructor(Context::class.java, AttributeSet::class.java)
-            return constructor.newInstance(context, attributeSet)
+            val constructor =
+                clazz.getConstructor(Context::class.java, AttributeSet::class.java, Int::class.java)
+            return constructor.newInstance(context, attributeSet, 0)
         } catch (e: Exception) {
             e.printStackTrace()
         }

@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import androidx.appcompat.R
 import com.mx.skinchange.base.ISkinView
 import com.mx.skinchange.common.attrs.AttrBackground
 import com.mx.skinchange.common.attrs.AttrTextView
@@ -17,7 +18,7 @@ import com.mx.skinchange.utils.MXSkinObserver
  * 2：文字颜色、文字Hint颜色、四边Drawable变化
  */
 open class MXSkinButton @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.buttonStyle
 ) : androidx.appcompat.widget.AppCompatButton(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
@@ -45,10 +46,11 @@ open class MXSkinButton @JvmOverloads constructor(
     }
 
     override fun setTextAppearance(resId: Int) {
-        setTextAppearance(context, resId)
+        super.setTextAppearance(resId)
+        attrTextView?.setTextAppearance(resId)
     }
 
-    override fun setTextAppearance(context: Context?, resId: Int) {
+    override fun setTextAppearance(context: Context, resId: Int) {
         super.setTextAppearance(context, resId)
         attrTextView?.setTextAppearance(resId)
     }

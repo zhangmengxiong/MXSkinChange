@@ -11,7 +11,7 @@ import com.mx.skinchange.common.attrs.AttrTextView
 import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinTextView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.textViewStyle
 ) : androidx.appcompat.widget.AppCompatTextView(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
@@ -38,10 +38,11 @@ open class MXSkinTextView @JvmOverloads constructor(
     }
 
     override fun setTextAppearance(resId: Int) {
-        this.setTextAppearance(context, resId)
+        super.setTextAppearance(resId)
+        attrTextView?.setTextAppearance(resId)
     }
 
-    override fun setTextAppearance(context: Context?, resId: Int) {
+    override fun setTextAppearance(context: Context, resId: Int) {
         super.setTextAppearance(context, resId)
         attrTextView?.setTextAppearance(resId)
     }
