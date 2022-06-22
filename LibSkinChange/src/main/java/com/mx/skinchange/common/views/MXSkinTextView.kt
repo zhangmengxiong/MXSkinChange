@@ -13,7 +13,7 @@ import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinTextView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.textViewStyle
-) : androidx.appcompat.widget.AppCompatTextView(context, attrs, defStyleAttr), ISkinView {
+) : TextView(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
     private var attrTextView: AttrTextView? = null

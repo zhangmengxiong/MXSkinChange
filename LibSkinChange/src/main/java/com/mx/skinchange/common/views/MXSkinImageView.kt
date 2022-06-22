@@ -13,7 +13,7 @@ import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : androidx.appcompat.widget.AppCompatImageView(context, attrs, defStyleAttr), ISkinView {
+) : ImageView(context, attrs, defStyleAttr), ISkinView {
     private var attrBackground: AttrBackground? = null
     private var attrImageView: AttrImageView? = null
 

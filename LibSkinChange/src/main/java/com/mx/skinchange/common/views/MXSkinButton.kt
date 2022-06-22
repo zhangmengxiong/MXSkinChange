@@ -19,7 +19,7 @@ import com.mx.skinchange.utils.MXSkinObserver
  */
 open class MXSkinButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.buttonStyle
-) : androidx.appcompat.widget.AppCompatButton(context, attrs, defStyleAttr), ISkinView {
+) : Button(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
     private var attrTextView: AttrTextView? = null

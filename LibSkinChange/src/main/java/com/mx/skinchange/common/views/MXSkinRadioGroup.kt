@@ -13,8 +13,6 @@ import com.mx.skinchange.utils.MXSkinObserver
 open class MXSkinRadioGroup @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : RadioGroup(context, attrs), ISkinView {
-
-
     private var attrBackground: AttrBackground? = null
 
     init {

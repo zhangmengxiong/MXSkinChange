@@ -72,6 +72,14 @@ object MXSkinViewRegister {
         skinViewList[name] = iSkinView
     }
 
+    fun unregister(iSkinView: Class<out ISkinView>) {
+        val name = getNameByClass(iSkinView) ?: return
+        val exitsOne = skinViewList.keys.firstOrNull { it == name }
+        if (exitsOne != null) {
+            skinViewList.remove(exitsOne)
+        }
+    }
+
     private fun getNameByClass(iSkinView: Class<out ISkinView>): String? {
         return createSkinView(iSkinView, MXSkinManager.appContext, null)?.getName()
     }

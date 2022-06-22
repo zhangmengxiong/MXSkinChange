@@ -22,7 +22,7 @@ open class MXSkinRadioButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = android.R.attr.radioButtonStyle
-) : androidx.appcompat.widget.AppCompatRadioButton(context, attrs, defStyleAttr), ISkinView {
+) : RadioButton(context, attrs, defStyleAttr), ISkinView {
     private var attrBackground: AttrBackground? = null
     private var attrTextView: AttrTextView? = null
     private var attrButton: AttrButton? = null

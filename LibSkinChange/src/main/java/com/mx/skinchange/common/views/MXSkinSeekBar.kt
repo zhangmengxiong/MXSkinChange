@@ -13,7 +13,7 @@ import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinSeekBar @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.seekBarStyle
-) : androidx.appcompat.widget.AppCompatSeekBar(context, attrs, defStyleAttr), ISkinView {
+) : SeekBar(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
     private var attrProgressBar: AttrSeekBarProgressBar? = null

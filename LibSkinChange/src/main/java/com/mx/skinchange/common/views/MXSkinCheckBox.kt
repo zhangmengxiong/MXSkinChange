@@ -14,7 +14,7 @@ import com.mx.skinchange.utils.MXSkinObserver
 
 open class MXSkinCheckBox @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.checkboxStyle
-) : androidx.appcompat.widget.AppCompatCheckBox(context, attrs, defStyleAttr), ISkinView {
+) : CheckBox(context, attrs, defStyleAttr), ISkinView {
 
     private var attrBackground: AttrBackground? = null
     private var attrButton: AttrButton? = null
