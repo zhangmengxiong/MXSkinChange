@@ -2,7 +2,7 @@
 [![](https://jitpack.io/v/com.gitee.zhangmengxiong/MXSkinChange.svg)](https://jitpack.io/#com.gitee.zhangmengxiong/MXSkinChange)
 
 ```gradle
-    implementation 'com.gitee.zhangmengxiong:MXSkinChange:1.0.6'
+    implementation 'com.gitee.zhangmengxiong:MXSkinChange:1.1.0'
 ```
 插件深度绑定 `AppCompatActivity` `Lifecycle`，Activity打开和结束自动释放对View的引用
 项目原理：
